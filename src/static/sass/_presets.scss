@@ -1,0 +1,32 @@
+$mobile-width: 768px;
+$max-desktop-width: 1126px;
+
+$colors: (
+  text1: #fff,
+  text2: lighten(#fff, 63%),
+  watermark: #ffeeee12,
+  highlight: #ff8800,
+  background: #03183a,
+);
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+@mixin mobile {
+  @media (max-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}

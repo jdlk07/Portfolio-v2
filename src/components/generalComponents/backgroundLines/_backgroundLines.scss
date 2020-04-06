@@ -1,0 +1,78 @@
+.background-lines-wrapper {
+  position: absolute;
+  top: 0;
+  height: 180vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // background-color: lightsalmon;
+
+  $backgroundLineContainerWidth: 6px;
+
+  .background-container {
+    height: 100%;
+    width: $max-desktop-width + ($backgroundLineContainerWidth * 2);
+    // background-color: teal;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  $lineHeights: (
+    0: 84%,
+    1: 100%,
+    2: 79%,
+    3: 92%,
+  );
+
+  .background-line-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $backgroundLineContainerWidth;
+    overflow: hidden;
+
+    @each $order, $height in $lineHeights {
+      &:nth-of-type(#{$order + 1}) {
+        height: $height;
+        .background-line-slider {
+          $duration: $order * 2 + 13s;
+
+          animation: background-line-slider-animation $duration linear infinite;
+        }
+      }
+    }
+
+    .background-line {
+      width: 1px;
+      height: 100%;
+      background-color: color(watermark);
+
+      .background-line-slider {
+        $sliderHeight: 35px;
+
+        position: absolute;
+        top: -$sliderHeight;
+        left: 0;
+        right: 0;
+        background-color: color(watermark);
+        height: $sliderHeight;
+        border-radius: 10%;
+        //Below seems to prevent random lines being drawn for some reason.
+        -webkit-transform: translateZ(0);
+        // width: 3px;
+      }
+    }
+  }
+
+  @include keyframes(background-line-slider-animation) {
+    0% {
+      top: -10px;
+    }
+    100% {
+      top: 100%;
+    }
+  }
+}

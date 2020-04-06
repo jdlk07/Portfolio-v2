@@ -1,0 +1,6 @@
+@import '../static//sass/presets';
+
+.app {
+  @import './generalComponents//backgroundLines/backgroundLines';
+  @import './sections/home/home.scss';
+}

@@ -8,9 +8,9 @@ const Line = () => (
   </div>
 )
 
-const BackgroundLines = ({}) => {
+const VerticalBackgroundLines = ({}) => {
   return (
-    <div className='background-lines-wrapper'>
+    <div className='vertical-background-lines-wrapper'>
       <div className='background-container'>
         <Line />
         <Line />
@@ -21,4 +21,4 @@ const BackgroundLines = ({}) => {
   )
 }
 
-export default BackgroundLines
+export default VerticalBackgroundLines

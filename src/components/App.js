@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.scss'
 import Home from './sections/home/home'
-import BackgroundLines from './generalComponents/backgroundLines/backgroundLines'
+import VerticalBackgroundLines from './generalComponents/backgroundLines/verticalBackgroundLines'
 
 export default class App extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ export default class App extends Component {
   render() {
     return (
       <div className='app'>
-        <BackgroundLines />
+        <VerticalBackgroundLines />
         <Home />
       </div>
     )

@@ -8,7 +8,7 @@ const Line = () => (
   </div>
 )
 
-const VerticalBackgroundLines = ({}) => {
+const VerticalBackgroundLines = () => {
   return (
     <div className='vertical-background-lines-wrapper'>
       <div className='background-container'>

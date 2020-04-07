@@ -1,4 +1,6 @@
 import React from 'react'
+import MediaQuery from 'react-responsive'
+import { mobileWidth } from '../../../../../static/sharedVariables'
 
 interface CircleProps {
   images: Array<string>
@@ -9,9 +11,11 @@ const BackgroundCircle = ({ images }: CircleProps) => {
     <div className='background-circle-wrapper'>
       <div className='outer-circle'></div>
       <div className='inner-circle'>
-        <div className='image-container'>
-          <img src={images[0]} alt='react-logo' />
-        </div>
+        <MediaQuery minDeviceWidth={mobileWidth}>
+          <div className='image-container'>
+            <img src={images[0]} alt='react-logo' />
+          </div>
+        </MediaQuery>
       </div>
     </div>
   )

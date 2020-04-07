@@ -4,6 +4,7 @@
   bottom: 40px;
   height: 200px;
   width: 60px;
+  border-radius: 2px;
   z-index: 4;
   display: flex;
   box-sizing: border-box;
@@ -11,6 +12,12 @@
   justify-content: space-evenly;
   align-items: center;
   background-color: black;
+
+  @include mobile {
+    height: 150px;
+    width: 45px;
+    bottom: 15px;
+  }
 
   .contact-link {
     opacity: 0.8;
@@ -20,8 +27,16 @@
       transform: scale(1.2);
     }
   }
+
+  $iconSize: 22px;
+  $iconSizeMobile: 17px;
   .contact-icon {
-    height: 22px;
-    width: 22px;
+    height: $iconSize;
+    width: $iconSize;
+
+    @include mobile {
+      height: $iconSizeMobile;
+      width: $iconSizeMobile;
+    }
   }
 }

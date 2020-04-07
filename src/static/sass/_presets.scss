@@ -5,7 +5,7 @@ $max-desktop-width: 1126px;
 $colors: (
   text1: #fff,
   text2: darken(#fff, 18%),
-  watermark: #ffeeee12,
+  watermark: #ffeeee0f,
   highlight: #ff8800,
   background: #03183a,
 );
@@ -18,10 +18,10 @@ $fontSizes: (
 );
 
 $fontSizesMobile: (
-  heroHeader: 2.4rem,
-  subHeader: 1.5rem,
-  body: 0.9rem,
-  mini: 0.79rem,
+  heroHeader: 2.1rem,
+  subHeader: 1.3rem,
+  body: 0.85rem,
+  mini: 0.72rem,
 );
 
 @function color($color-name) {

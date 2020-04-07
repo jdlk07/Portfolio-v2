@@ -41,17 +41,19 @@
       top: 50%;
       height: $orbSize;
       width: $orbSize;
-      border: 1px solid color(watermark);
-      transform: translateY(-50%);
+      border: 1.2px solid color(watermark);
+      // transform: translateY(-50%);
       border-radius: 50%;
     }
 
     &:before {
-      left: -($orbSize / 2);
+      left: 0;
+      transform: translate(-50%, -50%);
     }
 
     &:after {
-      right: -($orbSize / 2);
+      right: 0;
+      transform: translate(50%, 50%);
     }
   }
   .inner-circle {

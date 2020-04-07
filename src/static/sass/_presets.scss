@@ -1,4 +1,5 @@
 $mobile-width: 768px;
+$max-mobile-width: 80vw;
 $max-desktop-width: 1126px;
 
 $colors: (
@@ -13,7 +14,14 @@ $fontSizes: (
   heroHeader: 3.7rem,
   subHeader: 2rem,
   body: 1.3rem,
-  mini: 0.9rem,
+  mini: 0.95rem,
+);
+
+$fontSizesMobile: (
+  heroHeader: 2.4rem,
+  subHeader: 1.5rem,
+  body: 0.9rem,
+  mini: 0.79rem,
 );
 
 @function color($color-name) {
@@ -24,8 +32,12 @@ $fontSizes: (
   @return map-get($fontSizes, $font-size-name);
 }
 
+@function fontSizeMobile($font-size-name) {
+  @return map-get($fontSizesMobile, $font-size-name);
+}
+
 @mixin mobile {
-  @media (max-width: #{$desktop}) {
+  @media (max-width: #{$mobile-width}) {
     @content;
   }
 }

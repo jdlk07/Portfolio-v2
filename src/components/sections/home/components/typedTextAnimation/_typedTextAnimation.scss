@@ -3,6 +3,11 @@
   width: auto;
   align-items: flex-end;
   height: fontSize(subHeader);
+
+  @include mobile {
+    height: fontSizeMobile(subHeader);
+  }
+
   // background: teal;
 
   .typed-text {
@@ -10,6 +15,10 @@
     font-weight: 500;
     color: color(text2);
     opacity: 0.4;
+
+    @include mobile {
+      font-size: fontSizeMobile(subHeader);
+    }
   }
 
   .animated-cursor {
@@ -19,6 +28,10 @@
     background-color: color(text2);
     opacity: 0.5;
     animation: cursor-blink-animation 1.2s infinite;
+
+    @include mobile {
+      height: fontSizeMobile(subHeader);
+    }
   }
 
   @include keyframes(cursor-blink-animation) {

@@ -10,7 +10,12 @@
   align-items: center;
   // background: teal;
 
+  @include mobile {
+    margin-right: -20%;
+  }
+
   $outerCircleSize: 80vh;
+  $outerCircleSizeMobile: 80vw;
 
   .outer-circle {
     position: relative;
@@ -22,6 +27,11 @@
     border: 1px solid color(watermark);
     border-radius: 50%;
     animation: circle-rotation-animation 34s linear infinite;
+
+    @include mobile {
+      height: $outerCircleSizeMobile;
+      width: $outerCircleSizeMobile;
+    }
 
     $orbSize: 18px;
     &:before,
@@ -46,6 +56,7 @@
   }
   .inner-circle {
     $innerCircleDifference: 18vh;
+    $innerCircleDifferenceMobile: 18vw;
 
     position: absolute;
     right: 0;
@@ -57,6 +68,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include mobile {
+      height: $outerCircleSizeMobile - $innerCircleDifferenceMobile;
+      width: $outerCircleSizeMobile - $innerCircleDifferenceMobile;
+      margin-right: $innerCircleDifferenceMobile / 2;
+    }
 
     .image-container {
       position: relative;

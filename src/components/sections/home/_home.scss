@@ -19,18 +19,32 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    // background: teal;
+    // background-color: teal;
+
+    @include mobile {
+      width: $max-mobile-width;
+    }
 
     .text-wrapper {
       position: relative;
       z-index: 2;
       margin-top: 13%;
 
+      @include mobile {
+        margin-top: 35%;
+      }
+
       .header {
         font-size: fontSize(heroHeader);
         font-weight: 600;
         color: color(text1);
         margin: 10px 0 40px 0;
+
+        @include mobile {
+          font-size: fontSizeMobile(heroHeader);
+          font-weight: 500;
+          margin: 10px 0 30px 0;
+        }
       }
     }
 
@@ -47,19 +61,26 @@
         // background-color: plum;
         display: flex;
 
-        .bottom-text-prefix {
-          font-size: fontSize(mini);
-          font-weight: 600;
-          color: color(text2);
-          opacity: 0.2;
-          margin: 0 7px 0 5px;
-        }
+        .bottom-text-prefix,
         .bottom-text {
           font-size: fontSize(mini);
           font-weight: 600;
           color: color(text2);
+
+          @include mobile {
+            font-size: fontSizeMobile(mini);
+            font-weight: 500;
+          }
+        }
+
+        .bottom-text-prefix {
+          opacity: 0.2;
+          margin: 0 10px 0 15px;
+        }
+        .bottom-text {
           text-transform: uppercase;
-          opacity: 0.6;
+          opacity: 0.7;
+          letter-spacing: 1.6px;
         }
       }
     }

@@ -1,14 +1,26 @@
 @import '../static//sass/presets';
 
 .app {
+  position: relative;
+  overflow-x: hidden;
+
   .body-text {
     font-size: fontSize(body);
     font-weight: 400;
     color: color(text2);
     white-space: pre-line;
     letter-spacing: 2px;
+    line-height: 30px;
+
+    @include mobile {
+      font-size: fontSizeMobile(body);
+      // font-weight: 500;
+      white-space: normal;
+      letter-spacing: 1.4px;
+    }
   }
 
-  @import './generalComponents//backgroundLines/verticalBackgroundLines';
+  @import './generalComponents/backgroundLines/verticalBackgroundLines/verticalBackgroundLines';
+  @import './generalComponents/sideContactBar/sideContactBar';
   @import './sections/home/home.scss';
 }

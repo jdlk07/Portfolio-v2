@@ -2,7 +2,7 @@
 
 .app {
   .body-text {
-    font-size: 1.3rem;
+    font-size: fontSize(body);
     font-weight: 400;
     color: color(text2);
     white-space: pre-line;

@@ -16,16 +16,51 @@
     position: relative;
     height: 100%;
     width: $max-desktop-width;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     // background: teal;
 
     .text-wrapper {
+      position: relative;
+      z-index: 2;
       margin-top: 13%;
 
       .header {
-        font-size: 3.7rem;
+        font-size: fontSize(heroHeader);
         font-weight: 600;
         color: color(text1);
         margin: 10px 0 40px 0;
+      }
+    }
+
+    .bottom-text-wrapper {
+      width: 100%;
+      height: 18%;
+      // background-color: #fff;
+
+      .bottom-text-container {
+        margin-left: 33%;
+        margin-bottom: 10px;
+        // height: 50px;
+        // width: 50px;
+        // background-color: plum;
+        display: flex;
+
+        .bottom-text-prefix {
+          font-size: fontSize(mini);
+          font-weight: 600;
+          color: color(text2);
+          opacity: 0.2;
+          margin: 0 7px 0 5px;
+        }
+        .bottom-text {
+          font-size: fontSize(mini);
+          font-weight: 600;
+          color: color(text2);
+          text-transform: uppercase;
+          opacity: 0.6;
+        }
       }
     }
   }

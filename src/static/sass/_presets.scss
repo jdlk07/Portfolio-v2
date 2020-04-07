@@ -9,8 +9,19 @@ $colors: (
   background: #03183a,
 );
 
+$fontSizes: (
+  heroHeader: 3.7rem,
+  subHeader: 2rem,
+  body: 1.3rem,
+  mini: 0.9rem,
+);
+
 @function color($color-name) {
   @return map-get($colors, $color-name);
+}
+
+@function fontSize($font-size-name) {
+  @return map-get($fontSizes, $font-size-name);
 }
 
 @mixin mobile {

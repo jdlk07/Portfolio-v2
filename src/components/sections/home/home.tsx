@@ -65,6 +65,14 @@ export default class Home extends PureComponent<IsProps, IsState> {
             <h1 className='header'>{data.header}</h1>
             <p className='body-text'>{data.statement}</p>
           </div>
+          <div className='bottom-text-wrapper'>
+            {data.bottomText.map((text, i) => (
+              <div className='bottom-text-container'>
+                <p className='bottom-text-prefix'>{`0${i + 1}`}</p>
+                <p className='bottom-text'>{text}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     )

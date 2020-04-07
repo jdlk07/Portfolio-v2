@@ -23,6 +23,8 @@ export default class Home extends PureComponent<IsProps, IsState> {
   }
 
   startActiveIndexTimer = () => {
+    clearTimeout(this.timer)
+
     let { activeIndex } = this.state
 
     const lastIndex = data.titles.length - 1

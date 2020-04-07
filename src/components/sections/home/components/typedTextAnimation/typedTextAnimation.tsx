@@ -14,6 +14,7 @@ export default class TypedTextAnimation extends PureComponent<
   IsState
 > {
   private typingTimer: any
+  private deleteTimer: any
 
   constructor(props: IsProps) {
     super(props)
@@ -24,6 +25,7 @@ export default class TypedTextAnimation extends PureComponent<
   }
 
   typeNewString = () => {
+    clearTimeout(this.typingTimer)
     const newText = this.props.text
 
     let { displayText } = this.state
@@ -41,6 +43,7 @@ export default class TypedTextAnimation extends PureComponent<
   }
 
   deleteString = () => {
+    clearTimeout(this.deleteTimer)
     let { displayText } = this.state
     this.setState(
       {
@@ -48,7 +51,7 @@ export default class TypedTextAnimation extends PureComponent<
       },
       () => {
         if (displayText.length !== 0) {
-          this.typingTimer = setTimeout(this.deleteString, 20)
+          this.deleteTimer = setTimeout(this.deleteString, 20)
         } else {
           this.typeNewString()
         }
@@ -70,6 +73,7 @@ export default class TypedTextAnimation extends PureComponent<
 
   componentWillUnmount() {
     clearTimeout(this.typingTimer)
+    clearTimeout(this.deleteTimer)
   }
 
   render() {

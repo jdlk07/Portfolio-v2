@@ -33,7 +33,7 @@
       width: $outerCircleSizeMobile;
     }
 
-    $orbSize: 18px;
+    $orbSize: 20px;
     &:before,
     &:after {
       content: '';
@@ -41,7 +41,7 @@
       top: 50%;
       height: $orbSize;
       width: $orbSize;
-      border: 1.2px solid color(watermark);
+      border: 1.7px solid color(watermark);
       // transform: translateY(-50%);
       border-radius: 50%;
     }

@@ -1,0 +1,151 @@
+.desktop-navbar-wrapper {
+  $navBg: #000000;
+
+  $navMinimizedWidth: 80px;
+  $navMaximizedWidth: 200px;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  width: $navMinimizedWidth;
+  background-color: rgba($color: $navBg, $alpha: 0.5);
+  transition: 250ms ease-in-out;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &:hover {
+    width: $navMaximizedWidth;
+    background-color: rgba($color: $navBg, $alpha: 0.7);
+
+    .footer-icon {
+      animation-play-state: running !important;
+    }
+  }
+
+  $navItemHeight: 80px;
+  $iconSize: 25px;
+
+  .nav-container {
+    position: relative;
+    padding: 0;
+    margin-top: 10vh;
+    // height: 54%;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    align-items: center;
+    // background-color: teal;
+
+    .blob-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: $navItemHeight;
+      width: $navMinimizedWidth;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 3s ease-in-out;
+
+      .active-blob {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: color(navHighlight);
+        // transform: translate(-50%, -25%);
+      }
+    }
+
+    .nav-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      height: $navItemHeight;
+      // width: 200px;
+      // background-color: teal;
+      opacity: 0.8;
+      transition: 100ms;
+
+      &.active {
+        opacity: 1;
+        cursor: default;
+
+        .nav-item-text {
+          font-weight: 600;
+        }
+
+        &:hover {
+          .nav-icon {
+            transform: scale(1);
+          }
+        }
+      }
+
+      &:hover {
+        opacity: 1;
+
+        .nav-icon {
+          transform: scale(1.1);
+        }
+      }
+
+      .nav-icon {
+        height: $iconSize;
+        width: $iconSize;
+        transition: 250ms;
+      }
+
+      .nav-item-text {
+        position: absolute;
+        font-size: fontSize(body);
+        color: color(text1);
+        left: $iconSize + 30px;
+        text-transform: capitalize;
+      }
+    }
+  }
+  .footer-container {
+    position: relative;
+    height: 80px;
+    width: $navMinimizedWidth;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-color: plum;
+
+    .footer-icon {
+      height: $iconSize + 10;
+      width: $iconSize + 10;
+      animation: react-spinner-animation 5s linear infinite;
+      animation-play-state: paused;
+    }
+
+    .footer-text {
+      position: absolute;
+      font-size: fontSize(mini);
+      color: color(text1);
+      font-weight: 400;
+      left: $iconSize + 55px;
+      width: 100%;
+
+      span {
+        color: #0cd7fc;
+      }
+    }
+
+    @include keyframes(react-spinner-animation) {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

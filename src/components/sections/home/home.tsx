@@ -1,11 +1,68 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
-export default class Home extends Component {
-  // constructor(props) {
-  //   super(props)
-  // }
+import { data } from './data'
+
+import BackgroundCircle from './components/backgroundCircle/backgroundCircle'
+import TypedTextAnimation from './components/typedTextAnimation/typedTextAnimation'
+
+interface IsProps {}
+
+interface IsState {
+  activeIndex: number
+}
+
+export default class Home extends PureComponent<IsProps, IsState> {
+  private timer: any
+
+  constructor(props: IsProps) {
+    super(props)
+
+    this.state = {
+      activeIndex: 0,
+    }
+  }
+
+  startActiveIndexTimer = () => {
+    let { activeIndex } = this.state
+
+    const lastIndex = data.titles.length - 1
+
+    const newIndex = activeIndex + 1 > lastIndex ? 0 : activeIndex + 1
+
+    const setNewIndex = () => {
+      this.setState({ activeIndex: newIndex }, () => {
+        this.timer = setTimeout(this.startActiveIndexTimer, 2500)
+      })
+    }
+
+    this.timer = setTimeout(setNewIndex, 2500)
+  }
+
+  componentDidMount() {
+    this.startActiveIndexTimer()
+  }
+
+  componentDidUpdate(prevProps: IsProps, prevState: IsState) {
+    console.log('home updated')
+  }
 
   render() {
-    return <div className='home-wrapper'></div>
+    let { activeIndex } = this.state
+
+    return (
+      <div className='home-wrapper'>
+        <div className='home-container'>
+          <BackgroundCircle images={data.circleImages} />
+          <div className='text-wrapper'>
+            <TypedTextAnimation
+              text={data.titles[activeIndex]}
+              activeIndex={activeIndex}
+            />
+            <h1 className='header'>{data.header}</h1>
+            <p className='body-text'>{data.statement}</p>
+          </div>
+        </div>
+      </div>
+    )
   }
 }

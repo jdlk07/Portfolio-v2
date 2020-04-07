@@ -1,6 +1,14 @@
 @import '../static//sass/presets';
 
 .app {
+  .body-text {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: color(text2);
+    white-space: pre-line;
+    letter-spacing: 2px;
+  }
+
   @import './generalComponents//backgroundLines/verticalBackgroundLines';
   @import './sections/home/home.scss';
 }

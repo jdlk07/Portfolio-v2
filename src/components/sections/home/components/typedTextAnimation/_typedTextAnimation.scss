@@ -1,0 +1,35 @@
+.typed-text-animation-wrapper {
+  display: flex;
+  width: auto;
+  align-items: flex-end;
+  height: 2rem;
+  // background: teal;
+
+  .typed-text {
+    font-size: 2rem;
+    font-weight: 500;
+    color: color(text2);
+    opacity: 0.4;
+  }
+
+  .animated-cursor {
+    margin-left: 5px;
+    height: 2rem;
+    width: 3px;
+    background-color: color(text2);
+    opacity: 0.5;
+    animation: cursor-blink-animation 1.2s infinite;
+  }
+
+  @include keyframes(cursor-blink-animation) {
+    0% {
+      opacity: 1;
+    }
+    30% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 0;
+    }
+  }
+}

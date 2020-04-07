@@ -42,8 +42,12 @@ export default class Home extends PureComponent<IsProps, IsState> {
     this.startActiveIndexTimer()
   }
 
-  componentDidUpdate(prevProps: IsProps, prevState: IsState) {
-    console.log('home updated')
+  // componentDidUpdate(prevProps: IsProps, prevState: IsState) {
+  //   console.log('home updated')
+  // }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer)
   }
 
   render() {

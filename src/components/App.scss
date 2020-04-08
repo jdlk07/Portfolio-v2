@@ -11,23 +11,6 @@
   /* Hide scrollbar for IE and Edge */
   -ms-overflow-style: none;
 
-  .body-text {
-    font-size: fontSize(body);
-    font-weight: 400;
-    color: color(text2);
-    white-space: pre-line;
-    letter-spacing: 2px;
-    line-height: 30px;
-
-    @include mobile {
-      font-size: fontSizeMobile(body);
-      // font-weight: 500;
-      white-space: normal;
-      letter-spacing: 1.4px;
-      line-height: 25px;
-    }
-  }
-
   @import './generalComponents/backgroundLines/verticalBackgroundLines/verticalBackgroundLines';
   @import './generalComponents/sideContactBar/sideContactBar';
   @import './generalComponents/desktopNavBar/desktopNavBar';

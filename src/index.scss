@@ -30,6 +30,23 @@ p {
   margin: 0;
 }
 
+.body-text {
+  font-size: fontSize(body);
+  font-weight: 400;
+  color: color(text2);
+  white-space: pre-line;
+  letter-spacing: 0.2px;
+  line-height: 25px;
+
+  @include mobile {
+    font-size: fontSizeMobile(body);
+    // font-weight: 500;
+    white-space: normal;
+    letter-spacing: 1.4px;
+    line-height: 25px;
+  }
+}
+
 // code {
 //   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 //     monospace;

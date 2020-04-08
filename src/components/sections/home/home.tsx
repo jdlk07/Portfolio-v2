@@ -66,6 +66,9 @@ export default class Home extends PureComponent<IsProps, IsState> {
             />
             <h1 className='header'>{data.header}</h1>
             <p className='body-text'>{data.statement}</p>
+            <a href='#' className='read-more-button'>
+              Read More
+            </a>
           </div>
           <div className='bottom-text-wrapper'>
             {data.bottomText.map((text, i) => (

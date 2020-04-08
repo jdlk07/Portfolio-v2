@@ -32,7 +32,7 @@
       margin-top: 13%;
 
       @include mobile {
-        margin-top: 35%;
+        margin-top: 23%;
       }
 
       .header {
@@ -49,14 +49,16 @@
       }
 
       .read-more-button {
+        $height: 42px;
+        $heightMobile: 36px;
         position: relative;
         display: block;
         // padding: 11px 40px;
-        height: 42px;
+        height: $height;
         width: 160px;
         text-align: center;
-        line-height: 42px;
-        border: 1px solid rgba(255, 238, 238, 0.581);
+        line-height: $height;
+        border: 1px solid rgba(255, 238, 238, 0.481);
         text-decoration: none;
         cursor: pointer;
         font-size: fontSize(mini);
@@ -64,6 +66,13 @@
         text-transform: uppercase;
         margin-top: 32px;
         transition: 250ms;
+
+        @include mobile {
+          height: $heightMobile;
+          width: 130px;
+          line-height: $heightMobile;
+          font-size: fontSizeMobile(mini);
+        }
 
         &:before {
           content: '';

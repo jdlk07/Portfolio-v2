@@ -14,5 +14,10 @@
   @import './generalComponents/backgroundLines/verticalBackgroundLines/verticalBackgroundLines';
   @import './generalComponents/sideContactBar/sideContactBar';
   @import './generalComponents/desktopNavBar/desktopNavBar';
+  @import './generalComponents/sectionHeader/sectionHeader';
+  @import './generalComponents/linesWithPlanes/linesWithPlanes';
+
   @import './sections/home/home.scss';
+
+  @import './sections/about/about.scss';
 }

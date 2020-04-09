@@ -50,15 +50,16 @@
 
       .read-more-button {
         $height: 42px;
-        $heightMobile: 36px;
+        $heightMobile: 34px;
         position: relative;
         display: block;
         // padding: 11px 40px;
         height: $height;
         width: 160px;
         text-align: center;
+        border-radius: 1px;
         line-height: $height;
-        border: 1px solid rgba(255, 238, 238, 0.481);
+        border: 0.5px solid rgba(255, 238, 238, 0.481);
         text-decoration: none;
         cursor: pointer;
         font-size: fontSize(mini);
@@ -69,7 +70,7 @@
 
         @include mobile {
           height: $heightMobile;
-          width: 130px;
+          width: 125px;
           line-height: $heightMobile;
           font-size: fontSizeMobile(mini);
         }

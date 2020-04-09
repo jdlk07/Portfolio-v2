@@ -1,0 +1,86 @@
+.about-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+
+  .about-container {
+    width: $max-desktop-width;
+    height: 100%;
+  }
+
+  .body-text-container {
+    max-width: 620px;
+
+    .subheader {
+      margin-bottom: 15px;
+      color: color(text1);
+      font-weight: 500;
+    }
+  }
+
+  .bottom-text-container {
+    margin-left: 33.3%;
+    margin-top: 150px;
+
+    .bottom-text {
+      font-size: fontSize(mini);
+      color: color(text1);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .bottom-text-bar {
+      display: block;
+      width: 40px;
+      height: 2.5px;
+      background-color: color(highlight);
+      margin: 12px 0;
+    }
+
+    .name-value-container {
+      display: flex;
+      width: 140px;
+      justify-content: space-between;
+      margin-bottom: 10px;
+
+      .bottom-text-name {
+        opacity: 0.4;
+      }
+
+      .bottom-text-value {
+        font-weight: 500;
+      }
+    }
+  }
+
+  .globe {
+    $globeSize: 340px;
+
+    position: absolute;
+    right: -20px;
+    bottom: 140px;
+    height: $globeSize;
+    width: $globeSize;
+    border-radius: 50%;
+    // background-color: teal;
+    // border: 1px solid color(watermark);
+    background-color: color(background);
+    box-shadow: inset 0 0 30px rgba(255, 238, 238, 0.45);
+    background-image: url('../../../static//images//earth.png');
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    animation: globe-animation 22s linear infinite;
+
+    @include keyframes(globe-animation) {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+  }
+}

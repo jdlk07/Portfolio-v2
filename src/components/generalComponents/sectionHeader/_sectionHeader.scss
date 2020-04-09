@@ -1,0 +1,15 @@
+.section-header-wrapper {
+  .header-bar {
+    display: block;
+    height: 5px;
+    width: 60px;
+    background-color: color(text1);
+  }
+
+  .section-header-text {
+    font-size: fontSize(subHeader);
+    color: color(text1);
+    font-weight: 500;
+    margin: 15px 0;
+  }
+}

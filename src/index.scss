@@ -47,6 +47,16 @@ p {
   }
 }
 
+.section-wrapper {
+  position: relative;
+  z-index: 2;
+
+  .section-container {
+    position: relative;
+    padding: 110px 0;
+  }
+}
+
 // code {
 //   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 //     monospace;

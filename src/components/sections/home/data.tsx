@@ -9,6 +9,6 @@ export const data = {
   ],
   header: 'Janath Perera',
   circleImages: [ReactLogo],
-  statement: 'Creating seamless interactions between\nhumans and machines.',
+  statement: 'Creating seamless interactions between humans and machines.',
   bottomText: ['web', 'mobile'],
 }

@@ -8,7 +8,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // background-color: lightsalmon;
+
+  @include mobile {
+    height: 220vh;
+  }
 
   $backgroundLineContainerWidth: 6px;
 
@@ -25,10 +28,12 @@
     }
   }
 
-  $lineHeights: (
-    0: 84%,
-    1: 100%,
-    2: 79%,
+  $lineHeightsWithMobileHeights: 0 84% 100%, 1 100% 85%, 2 79% 70%, 3 92% 92%;
+
+  $lineHeightMobile: (
+    0: 100%,
+    1: 85%,
+    2: 70%,
     3: 92%,
   );
 
@@ -40,9 +45,13 @@
     width: $backgroundLineContainerWidth;
     overflow: hidden;
 
-    @each $order, $height in $lineHeights {
+    @each $order, $height, $mobileHeight in $lineHeightsWithMobileHeights {
       &:nth-of-type(#{$order + 1}) {
         height: $height;
+
+        @include mobile {
+          height: $mobileHeight;
+        }
         .background-line-slider {
           $duration: $order * 2 + 13s;
 

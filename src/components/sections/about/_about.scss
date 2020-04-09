@@ -7,12 +7,15 @@
   align-items: center;
 
   .about-container {
-    width: $max-desktop-width;
     height: 100%;
   }
 
   .body-text-container {
     max-width: 620px;
+
+    @include mobile {
+      max-width: 280px;
+    }
 
     .subheader {
       margin-bottom: 15px;
@@ -25,11 +28,20 @@
     margin-left: 33.3%;
     margin-top: 150px;
 
+    @include mobile {
+      margin-left: 0;
+      margin-top: 200px;
+    }
+
     .bottom-text {
       font-size: fontSize(mini);
       color: color(text1);
       text-transform: uppercase;
       letter-spacing: 1px;
+
+      @include mobile {
+        font-size: fontSizeMobile(mini);
+      }
     }
 
     .bottom-text-bar {
@@ -38,6 +50,11 @@
       height: 2.5px;
       background-color: color(highlight);
       margin: 12px 0;
+
+      @include mobile {
+        width: 35px;
+        height: 1.5px;
+      }
     }
 
     .name-value-container {
@@ -58,6 +75,7 @@
 
   .globe {
     $globeSize: 340px;
+    $globeSizeMobile: 190px;
 
     position: absolute;
     right: -20px;
@@ -73,6 +91,12 @@
     background-repeat: repeat-x;
     background-size: auto 100%;
     animation: globe-animation 22s linear infinite;
+
+    @include mobile {
+      height: $globeSizeMobile;
+      width: $globeSizeMobile;
+      bottom: 185px;
+    }
 
     @include keyframes(globe-animation) {
       0% {

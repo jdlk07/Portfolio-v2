@@ -57,7 +57,7 @@ export default class Home extends PureComponent<IsProps, IsState> {
 
     return (
       <div className='home-wrapper'>
-        <div className='home-container'>
+        <div className='home-container section-container'>
           <BackgroundCircle images={data.circleImages} />
           <div className='text-wrapper'>
             <TypedTextAnimation

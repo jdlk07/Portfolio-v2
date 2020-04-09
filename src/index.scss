@@ -41,9 +41,9 @@ p {
   @include mobile {
     font-size: fontSizeMobile(body);
     // font-weight: 500;
-    white-space: normal;
+    white-space: pre-line;
     letter-spacing: 1.4px;
-    line-height: 25px;
+    line-height: 22px;
   }
 }
 
@@ -54,6 +54,11 @@ p {
   .section-container {
     position: relative;
     padding: 110px 0;
+    width: $max-desktop-width;
+
+    @include mobile {
+      width: $max-mobile-width;
+    }
   }
 }
 

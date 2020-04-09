@@ -4,6 +4,10 @@
   // height: 80px;
   // background-color: teal;
 
+  @include mobile {
+    margin: 0 0;
+  }
+
   .line-container {
     position: relative;
     width: 100%;
@@ -17,6 +21,10 @@
 
       .plane {
         animation-duration: 39s;
+
+        @include mobile {
+          animation-duration: 25s;
+        }
       }
     }
 
@@ -34,7 +42,14 @@
       width: auto;
       opacity: 0.1;
       // transform: translateX(-10vw);
-      animation: plane-animation 35s linear infinite;
+      animation-name: plane-animation;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-duration: 35s;
+
+      @include mobile {
+        animation-duration: 29s;
+      }
 
       @include keyframes(plane-animation) {
         0% {

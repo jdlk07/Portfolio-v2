@@ -12,4 +12,15 @@
     font-weight: 500;
     margin: 15px 0;
   }
+
+  @include mobile {
+    .header-bar {
+      height: 3px;
+      width: 40px;
+    }
+
+    .section-header-text {
+      font-size: fontSizeMobile(subHeader);
+    }
+  }
 }

@@ -4,6 +4,8 @@
   $navMinimizedWidth: 80px;
   $navMaximizedWidth: 200px;
 
+  $navTextMarginLeft: $navMinimizedWidth + 5px;
+
   position: fixed;
   left: 0;
   top: 0;
@@ -115,7 +117,7 @@
         position: absolute;
         font-size: fontSize(body);
         color: color(text1);
-        left: $navMinimizedWidth;
+        left: $navTextMarginLeft;
         text-transform: capitalize;
         transition: 100ms;
       }
@@ -143,7 +145,7 @@
       color: color(text1);
       font-weight: 400;
       // left: $iconSize + 55px;
-      left: $navMinimizedWidth;
+      left: $navTextMarginLeft;
       width: 100%;
 
       span {

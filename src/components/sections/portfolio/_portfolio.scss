@@ -1,0 +1,47 @@
+.portfolio-wrapper {
+  .portfolio-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .header-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: auto;
+    padding: 0 20px;
+    // background-color: teal;
+
+    &:after,
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 3px;
+      background-color: color(watermark);
+    }
+
+    &:before {
+      left: 0;
+    }
+
+    &:after {
+      right: 0;
+    }
+  }
+
+  .projects-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 100px 0;
+  }
+
+  @import './project//project';
+}

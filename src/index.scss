@@ -30,6 +30,34 @@ p {
   margin: 0;
 }
 
+.section-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .section-container {
+    position: relative;
+    padding: 110px 0;
+    width: $max-desktop-width;
+
+    @include mobile {
+      width: $max-mobile-width;
+    }
+  }
+}
+
+.header {
+  font-size: fontSize(header);
+  color: color(text1);
+  font-weight: 500;
+
+  @include mobile {
+    font-size: fontSizeMobile(header);
+  }
+}
+
 .body-text {
   font-size: fontSize(body);
   font-weight: 400;
@@ -44,21 +72,6 @@ p {
     white-space: pre-line;
     letter-spacing: 1.4px;
     line-height: 22px;
-  }
-}
-
-.section-wrapper {
-  position: relative;
-  z-index: 2;
-
-  .section-container {
-    position: relative;
-    padding: 110px 0;
-    width: $max-desktop-width;
-
-    @include mobile {
-      width: $max-mobile-width;
-    }
   }
 }
 

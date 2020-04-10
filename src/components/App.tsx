@@ -7,6 +7,7 @@ import DesktopNavBar from './generalComponents/desktopNavBar/desktopNavBar'
 import MediaQuery from 'react-responsive'
 import { mobileWidth } from '../static/sharedVariables'
 import About from './sections/about/about'
+import Portfolio from './sections/portfolio/portfolio'
 
 interface IsProps {}
 
@@ -33,6 +34,7 @@ export default class App extends Component<IsProps, IsState> {
         <SideContactBar />
         <Home />
         <About />
+        <Portfolio />
       </div>
     )
   }

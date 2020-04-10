@@ -1,7 +1,7 @@
 import React from 'react'
 import SectionHeader from '../../generalComponents/sectionHeader/sectionHeader'
 import { data } from './data'
-import LinesWithPlanes from '../../generalComponents/linesWithPlanes/linesWithPlanes'
+import LinesWithPlanes from '../../generalComponents/backgroundLines/linesWithPlanes/linesWithPlanes'
 
 const About = () => {
   return (

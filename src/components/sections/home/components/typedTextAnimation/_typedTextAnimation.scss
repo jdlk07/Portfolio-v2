@@ -2,35 +2,35 @@
   display: flex;
   width: auto;
   align-items: flex-end;
-  height: fontSize(subHeader);
+  height: fontSize(header);
 
   @include mobile {
-    height: fontSizeMobile(subHeader);
+    height: fontSizeMobile(header);
   }
 
   // background: teal;
 
   .typed-text {
-    font-size: fontSize(subHeader);
+    font-size: fontSize(header);
     font-weight: 500;
     color: color(text2);
     opacity: 0.4;
 
     @include mobile {
-      font-size: fontSizeMobile(subHeader);
+      font-size: fontSizeMobile(header);
     }
   }
 
   .animated-cursor {
     margin-left: 5px;
-    height: fontSize(subHeader);
+    height: fontSize(header);
     width: 3px;
     background-color: color(text2);
     opacity: 0.5;
     animation: cursor-blink-animation 1.2s infinite;
 
     @include mobile {
-      height: fontSizeMobile(subHeader);
+      height: fontSizeMobile(header);
     }
   }
 

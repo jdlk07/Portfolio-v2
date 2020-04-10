@@ -1,0 +1,135 @@
+.project-wrapper {
+  $projectHeight: 320px;
+  //Actual aspect ratio should be 1.6 but full screen screenshots can't be taken without the address bar taking up space which causes the hero to fill 100vh while taking the address bar into account.
+  $projectWidth: $projectHeight * 1.8;
+
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  // background-color: lightsalmon;
+
+  .project-type-header-container {
+    margin-bottom: 20px;
+    // background-color: blue;
+
+    .project-type-header {
+      color: color(text2);
+      text-transform: uppercase;
+    }
+  }
+
+  .project-container {
+    position: relative;
+    height: $projectHeight;
+    width: $projectWidth;
+    margin: 10px;
+    background-color: #002729;
+    overflow: hidden;
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.609);
+    transition: 250ms;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 1);
+      opacity: 0.7;
+      transition: 250ms;
+    }
+
+    .project-image {
+      width: 100%;
+      height: auto;
+      transform: translateY(0);
+      transition: 1s;
+    }
+
+    .project-title-container {
+      position: absolute;
+      z-index: 1;
+      top: 40px;
+      left: 0;
+      height: 45px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 25px 0 15px;
+      border-radius: 0 20px 20px 0;
+      // justify-content: center;
+      // align-items: center;
+      background-color: color(navHighlight);
+      transition: 250ms;
+      // transform: translateY(0);
+
+      .project-header {
+        color: color(text1);
+        font-weight: 500;
+        letter-spacing: 1px;
+        // background-color: plum;
+        // border-bottom: 1px solid white;
+      }
+    }
+  }
+
+  .description-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .description-icon-button {
+      $buttonSize: 50px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 85%;
+      height: $buttonSize;
+      width: $buttonSize;
+      border-radius: 10px 10px 0 0;
+      background-color: color(navHighlight);
+      transition: 250ms;
+      transform: translateY(100%);
+      cursor: pointer;
+
+      .description-icon {
+        height: $buttonSize - 20px;
+        width: $buttonSize - 20px;
+      }
+    }
+  }
+
+  &:hover {
+    .project-container {
+      transform: scale(1.1);
+      z-index: 2;
+      box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.609);
+
+      &:after {
+        opacity: 0;
+      }
+    }
+
+    .project-image {
+      transition: 8s;
+      transition-delay: 350ms;
+      transform: translateY(calc(-100% + #{$projectHeight}));
+    }
+
+    .project-title-container {
+      transform: translateX(-100%);
+    }
+
+    .description-icon-button {
+      transition-delay: 100ms;
+      transform: translateY(0);
+    }
+  }
+}

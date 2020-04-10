@@ -1,6 +1,6 @@
 import React from 'react'
 
-import PlaneImage from '../../../static/images/plane.svg'
+import PlaneImage from '../../../../static/images/plane.svg'
 
 const LineAndPlane = () => (
   <div className='line-container'>

@@ -15,9 +15,12 @@
   @import './generalComponents/sideContactBar/sideContactBar';
   @import './generalComponents/desktopNavBar/desktopNavBar';
   @import './generalComponents/sectionHeader/sectionHeader';
-  @import './generalComponents/linesWithPlanes/linesWithPlanes';
+  @import './generalComponents/backgroundLines/linesWithPlanes/linesWithPlanes';
+  @import './generalComponents/backgroundLines/linesWithCircles/linesWithCircles';
 
   @import './sections/home/home.scss';
 
   @import './sections/about/about.scss';
+
+  @import './sections/portfolio/portfolio.scss';
 }

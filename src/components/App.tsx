@@ -8,6 +8,7 @@ import MediaQuery from 'react-responsive'
 import { mobileWidth } from '../static/sharedVariables'
 import About from './sections/about/about'
 import Portfolio from './sections/portfolio/portfolio'
+import { TechStack } from './sections/techstack/techstack'
 
 interface IsProps {}
 
@@ -35,6 +36,7 @@ export default class App extends Component<IsProps, IsState> {
         <Home />
         <About />
         <Portfolio />
+        <TechStack />
       </div>
     )
   }

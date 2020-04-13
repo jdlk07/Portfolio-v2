@@ -15,6 +15,7 @@ interface IsProps {}
 
 interface IsState {
   loading: Boolean
+  showSideContact: Boolean
 }
 
 export default class App extends Component<IsProps, IsState> {
@@ -23,6 +24,7 @@ export default class App extends Component<IsProps, IsState> {
 
     this.state = {
       loading: false,
+      showSideContact: true,
     }
   }
 

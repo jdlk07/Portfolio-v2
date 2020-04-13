@@ -20,6 +20,10 @@
   transition: 500ms;
   transform: translateY($fullDescriptionHeight + 10px);
 
+  &.hidden {
+    transform: translateY(100%);
+  }
+
   @include mobile {
     right: 0;
     width: 100%;

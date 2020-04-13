@@ -12,6 +12,11 @@
   justify-content: space-evenly;
   align-items: center;
   background-color: black;
+  transition: 500ms;
+
+  &.hidden {
+    transform: translateX(100%);
+  }
 
   @include mobile {
     height: 150px;
@@ -21,10 +26,10 @@
 
   .contact-link {
     opacity: 0.8;
-    transition-duration: 0.5s;
+    transition-duration: 150ms;
     &:hover {
       opacity: 1;
-      transform: scale(1.2);
+      transform: scale(1.1) translateY(-10%);
     }
   }
 

@@ -14,8 +14,8 @@ import { Contact } from './sections/contact/contact'
 interface IsProps {}
 
 interface IsState {
-  loading: Boolean
-  showSideContact: Boolean
+  loading: boolean
+  showSideContact: boolean
 }
 
 export default class App extends Component<IsProps, IsState> {
@@ -28,19 +28,27 @@ export default class App extends Component<IsProps, IsState> {
     }
   }
 
+  toggleSideContact = (show: boolean) => {
+    this.setState({ showSideContact: show })
+  }
+
   render() {
+    let { showSideContact } = this.state
     return (
       <div className='app'>
         <MediaQuery minWidth={mobileWidth + 1}>
           <DesktopNavBar />
         </MediaQuery>
         <VerticalBackgroundLines />
-        <SideContactBar />
+        <SideContactBar visible={showSideContact} />
         <Home />
         <About />
         <Portfolio />
         <TechStack />
-        <Contact />
+        <Contact
+          showHelpingHand={!showSideContact}
+          toggleSideContact={this.toggleSideContact}
+        />
       </div>
     )
   }

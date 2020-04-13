@@ -22,8 +22,12 @@ const icons = [
   },
 ]
 
-const SideContactBar = () => (
-  <div className='side-contact-bar-wrapper'>
+interface IsProps {
+  visible: boolean
+}
+
+const SideContactBar = ({ visible = true }: IsProps) => (
+  <div className={`side-contact-bar-wrapper${visible ? '' : ' hidden'}`}>
     {icons.map((icon, i) => (
       <a
         key={i}

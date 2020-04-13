@@ -23,7 +23,7 @@ export const data = {
     },
     {
       title: 'Extras',
-      body: ['React Native Reanimated', 'Greensock'],
+      body: ['React Native Reanimated', 'Greensock', 'Anime.js'],
     },
   ],
 }

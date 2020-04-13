@@ -26,6 +26,7 @@ const SideContactBar = () => (
   <div className='side-contact-bar-wrapper'>
     {icons.map((icon, i) => (
       <a
+        key={i}
         href={icon.link}
         target='_blank'
         rel='noopener noreferrer'

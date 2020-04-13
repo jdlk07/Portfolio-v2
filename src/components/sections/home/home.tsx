@@ -58,7 +58,7 @@ export default class Home extends PureComponent<IsProps, IsState> {
     return (
       <div className='home-wrapper'>
         <div className='home-container section-container'>
-          <BackgroundCircle images={data.circleImages} />
+          <BackgroundCircle activeIndex={activeIndex} />
           <div className='text-wrapper'>
             <TypedTextAnimation
               text={data.titles[activeIndex]}
@@ -72,7 +72,7 @@ export default class Home extends PureComponent<IsProps, IsState> {
           </div>
           <div className='bottom-text-wrapper'>
             {data.bottomText.map((text, i) => (
-              <div className='bottom-text-container'>
+              <div key={i} className='bottom-text-container'>
                 <p className='bottom-text-prefix'>{`0${i + 1}`}</p>
                 <p className='bottom-text'>{text}</p>
               </div>

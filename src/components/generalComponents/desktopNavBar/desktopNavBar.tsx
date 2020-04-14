@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-scroll'
 
 import HomeIcon from '../../../static/navIcons/home.svg'
 import AboutIcon from '../../../static/navIcons/about.svg'
@@ -12,27 +13,28 @@ const navItems = [
   {
     name: 'home',
     icon: HomeIcon,
-    link: '#',
+    link: 'home-screen',
   },
   {
     name: 'about',
     icon: AboutIcon,
-    link: '#',
+    link: 'about-screen',
   },
   {
     name: 'portfolio',
     icon: PortfolioIcon,
-    link: '#',
+    link: 'portfolio-screen',
   },
   {
     name: 'tech stack',
     icon: TechStackIcon,
-    link: '#',
+    link: 'tech-stack-screen',
   },
   {
     name: 'contact',
     icon: ContactIcon,
-    link: '#',
+    link: 'contact-screen',
+    offset: 10,
   },
 ]
 
@@ -45,8 +47,10 @@ const DesktopNavBar = () => {
           <span className='active-blob' />
         </div>
         {navItems.map((item, i) => (
-          <a
-            href={item.link}
+          <Link
+            to={item.link}
+            offset={item.offset || 0}
+            smooth
             className={`nav-item${
               activeSection === item.name ? ' active' : ''
             }`}
@@ -57,7 +61,7 @@ const DesktopNavBar = () => {
               className='nav-icon'
             />
             <p className='nav-item-text'>{item.name}</p>
-          </a>
+          </Link>
         ))}
       </ul>
       <div className='footer-container'>

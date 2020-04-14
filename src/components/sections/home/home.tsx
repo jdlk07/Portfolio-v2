@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react'
 
 import { data } from './data'
 
+import { Link, Element } from 'react-scroll'
+
 import BackgroundCircle from './components/backgroundCircle/backgroundCircle'
 import TypedTextAnimation from './components/typedTextAnimation/typedTextAnimation'
 
@@ -40,6 +42,8 @@ export default class Home extends PureComponent<IsProps, IsState> {
     this.timer = setTimeout(setNewIndex, 2500)
   }
 
+  onReadMoreClick = () => {}
+
   componentDidMount() {
     this.startActiveIndexTimer()
   }
@@ -56,30 +60,32 @@ export default class Home extends PureComponent<IsProps, IsState> {
     let { activeIndex } = this.state
 
     return (
-      <div className='home-wrapper'>
-        <div className='home-container section-container'>
-          <BackgroundCircle activeIndex={activeIndex} />
-          <div className='text-wrapper'>
-            <TypedTextAnimation
-              text={data.titles[activeIndex]}
-              activeIndex={activeIndex}
-            />
-            <h1 className='header'>{data.header}</h1>
-            <p className='body-text'>{data.statement}</p>
-            <a href='#' className='read-more-button'>
-              Read More
-            </a>
-          </div>
-          <div className='bottom-text-wrapper'>
-            {data.bottomText.map((text, i) => (
-              <div key={i} className='bottom-text-container'>
-                <p className='bottom-text-prefix'>{`0${i + 1}`}</p>
-                <p className='bottom-text'>{text}</p>
-              </div>
-            ))}
+      <Element name='home-screen'>
+        <div className='home-wrapper'>
+          <div className='home-container section-container'>
+            <BackgroundCircle activeIndex={activeIndex} />
+            <div className='text-wrapper'>
+              <TypedTextAnimation
+                text={data.titles[activeIndex]}
+                activeIndex={activeIndex}
+              />
+              <h1 className='header'>{data.header}</h1>
+              <p className='body-text'>{data.statement}</p>
+              <Link to={'about-screen'} className='read-more-button' smooth>
+                Read More
+              </Link>
+            </div>
+            <div className='bottom-text-wrapper'>
+              {data.bottomText.map((text, i) => (
+                <div key={i} className='bottom-text-container'>
+                  <p className='bottom-text-prefix'>{`0${i + 1}`}</p>
+                  <p className='bottom-text'>{text}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </Element>
     )
   }
 }

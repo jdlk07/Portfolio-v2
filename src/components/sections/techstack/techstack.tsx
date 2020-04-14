@@ -1,5 +1,7 @@
 import React from 'react'
 import SectionHeader from '../../generalComponents/sectionHeader/sectionHeader'
+import { Element } from 'react-scroll'
+
 import { data } from './data'
 
 import TechStackWatermark from '../../../static/otherIcons/tech-stack-bg.svg'
@@ -58,36 +60,34 @@ const MobileStacks = ({ stackData }: DesktopStacksProps) => (
 )
 
 export const TechStack = React.memo(() => {
-  const isDesktop = useMediaQuery({ query: `(min-width: ${mobileWidth})` })
-
-  console.log(isDesktop)
-
   return (
-    <div className='tech-stack-wrapper section-wrapper'>
-      <div className='tech-stack-container section-container'>
-        <SectionHeader header='Tech Stack' />
-        <div className='subheader-container'>
-          {data.roles.map((role) => (
-            <p className='subheader-text'>{role}</p>
-          ))}
-        </div>
-        <MediaQuery minDeviceWidth={mobileWidth}>
-          {(isDesktop) =>
-            isDesktop ? (
-              <DesktopStacks stackData={data.stack} />
-            ) : (
-              <MobileStacks stackData={data.stack} />
-            )
-          }
-        </MediaQuery>
-        <div className='tech-stack-watermark-container'>
-          <img
-            src={TechStackWatermark}
-            alt='tech-stack-watermark'
-            className='tech-stack-watermark'
-          />
+    <Element name='tech-stack-screen'>
+      <div className='tech-stack-wrapper section-wrapper'>
+        <div className='tech-stack-container section-container'>
+          <SectionHeader header='Tech Stack' />
+          <div className='subheader-container'>
+            {data.roles.map((role) => (
+              <p className='subheader-text'>{role}</p>
+            ))}
+          </div>
+          <MediaQuery minDeviceWidth={mobileWidth}>
+            {(isDesktop) =>
+              isDesktop ? (
+                <DesktopStacks stackData={data.stack} />
+              ) : (
+                <MobileStacks stackData={data.stack} />
+              )
+            }
+          </MediaQuery>
+          <div className='tech-stack-watermark-container'>
+            <img
+              src={TechStackWatermark}
+              alt='tech-stack-watermark'
+              className='tech-stack-watermark'
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </Element>
   )
 })

@@ -10,7 +10,6 @@ import About from './sections/about/about'
 import Portfolio from './sections/portfolio/portfolio'
 import { TechStack } from './sections/techstack/techstack'
 import { Contact } from './sections/contact/contact'
-import VisibilitySensor from 'react-visibility-sensor'
 
 const sections = [
   {

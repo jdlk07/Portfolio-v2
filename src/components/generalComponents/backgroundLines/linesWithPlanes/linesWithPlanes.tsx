@@ -9,11 +9,13 @@ const LineAndPlane = () => (
   </div>
 )
 
-const LinesWithPlanes = () => (
-  <div className='lines-with-planes-wrapper'>
-    <LineAndPlane />
-    <LineAndPlane />
-  </div>
-)
+const LinesWithPlanes = () => {
+  return (
+    <div className='lines-with-planes-wrapper'>
+      <LineAndPlane />
+      <LineAndPlane />
+    </div>
+  )
+}
 
 export default React.memo(LinesWithPlanes)

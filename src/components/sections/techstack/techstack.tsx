@@ -1,11 +1,13 @@
 import React from 'react'
+import { Parallax, withController } from 'react-scroll-parallax'
+import MediaQuery from 'react-responsive'
+
 import SectionHeader from '../../generalComponents/sectionHeader/sectionHeader'
 import { Element } from 'react-scroll'
 
 import { data } from './data'
 
 import TechStackWatermark from '../../../static/otherIcons/tech-stack-bg.svg'
-import MediaQuery, { useMediaQuery } from 'react-responsive'
 import { mobileWidth } from '../../../static/sharedVariables'
 
 interface StackProps {
@@ -59,7 +61,9 @@ const MobileStacks = ({ stackData }: DesktopStacksProps) => (
   </div>
 )
 
-export const TechStack = React.memo(() => {
+const _TechStack = ({ parallaxController }: { parallaxController: any }) => {
+  const updateParallaxController = () => parallaxController.update()
+
   return (
     <Element name='tech-stack-screen'>
       <div className='tech-stack-wrapper section-wrapper'>
@@ -80,14 +84,21 @@ export const TechStack = React.memo(() => {
             }
           </MediaQuery>
           <div className='tech-stack-watermark-container'>
-            <img
-              src={TechStackWatermark}
-              alt='tech-stack-watermark'
-              className='tech-stack-watermark'
-            />
+            <Parallax y={[-10, 10]} tagOuter='figure'>
+              <img
+                src={TechStackWatermark}
+                alt='tech-stack-watermark'
+                className='tech-stack-watermark'
+                onLoad={updateParallaxController}
+              />
+            </Parallax>
           </div>
         </div>
       </div>
     </Element>
   )
-})
+}
+
+const WithScrollParallaxController = withController(_TechStack)
+
+export const TechStack = React.memo(WithScrollParallaxController)

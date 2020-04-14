@@ -6,8 +6,11 @@ import { Link, Element } from 'react-scroll'
 
 import BackgroundCircle from './components/backgroundCircle/backgroundCircle'
 import TypedTextAnimation from './components/typedTextAnimation/typedTextAnimation'
+import ReactVisibilitySensor from 'react-visibility-sensor'
 
-interface IsProps {}
+interface IsProps {
+  setActiveSection: (section: string) => void
+}
 
 interface IsState {
   activeIndex: number
@@ -42,15 +45,15 @@ export default class Home extends PureComponent<IsProps, IsState> {
     this.timer = setTimeout(setNewIndex, 2500)
   }
 
-  onReadMoreClick = () => {}
+  onVisible = (isVisible: boolean) => {
+    if (isVisible) {
+      this.props.setActiveSection('home')
+    }
+  }
 
   componentDidMount() {
     this.startActiveIndexTimer()
   }
-
-  // componentDidUpdate(prevProps: IsProps, prevState: IsState) {
-  //   console.log('home updated')
-  // }
 
   componentWillUnmount() {
     clearTimeout(this.timer)
@@ -64,17 +67,19 @@ export default class Home extends PureComponent<IsProps, IsState> {
         <div className='home-wrapper'>
           <div className='home-container section-container'>
             <BackgroundCircle activeIndex={activeIndex} />
-            <div className='text-wrapper'>
-              <TypedTextAnimation
-                text={data.titles[activeIndex]}
-                activeIndex={activeIndex}
-              />
-              <h1 className='header'>{data.header}</h1>
-              <p className='body-text'>{data.statement}</p>
-              <Link to={'about-screen'} className='read-more-button' smooth>
-                Read More
-              </Link>
-            </div>
+            <ReactVisibilitySensor partialVisibility onChange={this.onVisible}>
+              <div className='text-wrapper'>
+                <TypedTextAnimation
+                  text={data.titles[activeIndex]}
+                  activeIndex={activeIndex}
+                />
+                <h1 className='header'>{data.header}</h1>
+                <p className='body-text'>{data.statement}</p>
+                <Link to={'about-screen'} className='read-more-button' smooth>
+                  Read More
+                </Link>
+              </div>
+            </ReactVisibilitySensor>
             <div className='bottom-text-wrapper'>
               {data.bottomText.map((text, i) => (
                 <div key={i} className='bottom-text-container'>

@@ -61,14 +61,19 @@ const MobileStacks = ({ stackData }: DesktopStacksProps) => (
   </div>
 )
 
-const _TechStack = ({ parallaxController }: { parallaxController: any }) => {
+interface IsProps {
+  parallaxController: any
+  setActiveSection: (section: string) => void
+}
+
+const _TechStack = ({ parallaxController, setActiveSection }: IsProps) => {
   const updateParallaxController = () => parallaxController.update()
 
   return (
     <Element name='tech-stack-screen'>
       <div className='tech-stack-wrapper section-wrapper'>
         <div className='tech-stack-container section-container'>
-          <SectionHeader header='Tech Stack' />
+          <SectionHeader header='Tech Stack' onVisible={setActiveSection} />
           <div className='subheader-container'>
             {data.roles.map((role) => (
               <p className='subheader-text'>{role}</p>

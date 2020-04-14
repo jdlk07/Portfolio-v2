@@ -38,12 +38,19 @@ const navItems = [
   },
 ]
 
-const DesktopNavBar = () => {
-  const activeSection = 'home'
+interface IsProps {
+  activeSection: string
+}
+
+const DesktopNavBar = ({ activeSection }: IsProps) => {
+  const activeIndex = navItems.findIndex((item) => item.name === activeSection)
+
+  const blobTranslateY = `translateY(${activeIndex * 100}%)`
+
   return (
     <div className='desktop-navbar-wrapper'>
       <ul className='nav-container'>
-        <div className='blob-wrapper'>
+        <div className='blob-wrapper' style={{ transform: blobTranslateY }}>
           <span className='active-blob' />
         </div>
         {navItems.map((item, i) => (

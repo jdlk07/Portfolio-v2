@@ -8,6 +8,11 @@
     display: none;
   }
 
+  background-image: url('../static/images/gradient-image.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+
   /* Hide scrollbar for IE and Edge */
   -ms-overflow-style: none;
 

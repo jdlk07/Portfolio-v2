@@ -4,12 +4,16 @@ import SectionHeader from '../../generalComponents/sectionHeader/sectionHeader'
 import { data } from './data'
 import LinesWithPlanes from '../../generalComponents/backgroundLines/linesWithPlanes/linesWithPlanes'
 
-const About = () => {
+interface IsProps {
+  setActiveSection: (section: string) => void
+}
+
+const About = ({ setActiveSection }: IsProps) => {
   return (
     <Element name='about-screen'>
       <div className='about-wrapper section-wrapper'>
         <div className='about-container section-container'>
-          <SectionHeader header={data.header} />
+          <SectionHeader header={data.header} onVisible={setActiveSection} />
           <div className='body-text-container'>
             <p className='subheader body-text'>{data.subheader}</p>
             <p className='body-text'>{data.body}</p>

@@ -1,7 +1,7 @@
 .side-contact-bar-wrapper {
   position: fixed;
   right: 0;
-  bottom: 40px;
+  bottom: 0;
   height: 200px;
   width: 60px;
   border-radius: 2px;
@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: black;
+  background-color: #2b1706;
   transition: 500ms;
 
   &.hidden {
@@ -21,7 +21,7 @@
   @include mobile {
     height: 150px;
     width: 45px;
-    bottom: 15px;
+    // bottom: 15px;
   }
 
   .contact-link {

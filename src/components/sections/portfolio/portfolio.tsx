@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Project } from './project/project'
 import { Element } from 'react-scroll'
 import { data } from './data'
@@ -10,8 +10,11 @@ interface IsProps {
 }
 
 const Portfolio = ({ setActiveSection }: IsProps) => {
+  const [visible, changeVisibilityState] = useState(false)
+
   const onVisibilityChange = (isVisible: boolean) => {
     if (isVisible) {
+      changeVisibilityState(isVisible)
       setActiveSection('portfolio')
     }
   }
@@ -19,7 +22,11 @@ const Portfolio = ({ setActiveSection }: IsProps) => {
   return (
     <Element name='portfolio-screen'>
       <div className='portfolio-wrapper section-wrapper'>
-        <div className='portfolio-container section-container'>
+        <div
+          className={`portfolio-container section-container ${
+            visible ? 'visible' : 'hidden'
+          }`}
+        >
           <ReactVisibilitySensor
             partialVisibility
             onChange={onVisibilityChange}

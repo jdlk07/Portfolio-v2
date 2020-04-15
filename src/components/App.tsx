@@ -83,17 +83,12 @@ export default class App extends PureComponent<IsProps, IsState> {
         </MediaQuery>
         <VerticalBackgroundLines />
         <SideContactBar visible={showSideContact} />
-        {sections.map((section, i) => (
+        {sections.map((section) => (
           <section.Component
             key={section.name}
             setActiveSection={this.changeActiveSection}
           />
         ))}
-        {/* <Home />
-        <About />
-        <Portfolio />
-        <TechStack />
-        <Contact /> */}
       </div>
     )
   }

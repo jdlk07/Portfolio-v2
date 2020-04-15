@@ -9,6 +9,7 @@ interface IsProps {
 }
 
 const About = ({ setActiveSection }: IsProps) => {
+  console.log('about updated')
   return (
     <Element name='about-screen'>
       <div className='about-wrapper section-wrapper'>

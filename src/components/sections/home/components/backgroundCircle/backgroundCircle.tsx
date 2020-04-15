@@ -1,7 +1,8 @@
 import React from 'react'
 import MediaQuery from 'react-responsive'
 import { mobileWidth } from '../../../../../static/sharedVariables'
-import { AnimatedImages } from './animatedImage/animatedImages'
+// import { AnimatedImages } from './animatedImageOLD/animatedImages'
+import { HeroImages } from './heroImages/heroImages'
 
 interface CircleProps {
   activeIndex: number
@@ -14,8 +15,7 @@ const BackgroundCircle = ({ activeIndex }: CircleProps) => {
       <div className='inner-circle'>
         <MediaQuery minDeviceWidth={mobileWidth}>
           <div className='image-container'>
-            {/* <img src={images[0]} alt='react-logo' /> */}
-            <AnimatedImages activeIndex={activeIndex} />
+            <HeroImages activeIndex={activeIndex} />
           </div>
         </MediaQuery>
       </div>

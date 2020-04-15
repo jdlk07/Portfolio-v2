@@ -1,4 +1,4 @@
-import WinfieldSportsScreenshot from '../../../static/portfolio/winfield-sports-screenshot-mini.png'
+import WinfieldSportsScreenshot from '../../../static/portfolio/winfield-sports.png'
 import GymJunkieScreenshot from '../../../static/portfolio/gym-junkie.png'
 
 export const data = {
@@ -9,7 +9,11 @@ export const data = {
       title: 'Winfield Sports',
       className: 'winfield',
       description:
-        'Winfield Sports is one of the leading international outdoor advertising companies across Asia and the UK. Specializing in cutting edge sports broadcast advertising utilizing 3D and VR techonology.',
+        'Winfield Sports is a leading international sports advertising company covering sports event around Asia and the UK.\nSpecializing in cutting edge 3D and VR technology.',
+      link: {
+        text: 'Visit website',
+        link: 'https://www.winfieldsports.net',
+      },
     },
     {
       type: 'mobile',
@@ -17,7 +21,11 @@ export const data = {
       title: 'Gym Junkie',
       className: 'gym-junkie',
       description:
-        'Winfield Sports is one of the leading international outdoor advertising companies across Asia and the UK. Specializing in cutting edge sports broadcast advertising utilizing 3D and VR techonology.',
+        'A pro-active fitness journal that tracks your workouts as you do them.\nBoasting easy input operations along with a simple yet informative layout.',
+      link: {
+        text: 'Coming this summer to play store',
+        // link: null,
+      },
     },
   ],
 }

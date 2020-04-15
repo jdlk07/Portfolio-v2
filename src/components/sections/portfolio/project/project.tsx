@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import InfoIcon from '../../../../static/otherIcons/info.svg'
+import ExternalLinkIcon from '../../../../static/otherIcons/external-link.svg'
 
 interface IsProps {
   data: {
@@ -9,6 +9,7 @@ interface IsProps {
     className: string
     title: string
     description: string
+    link: { text: string; link?: string }
   }
 }
 
@@ -19,35 +20,36 @@ export const Project = React.memo(({ data }: IsProps) => {
 
   return (
     <div className='project-wrapper'>
-      <div className='project-type-header-container'>
-        <h2 className='project-type-header header'>{data.type}</h2>
+      <div className='project-header-container reveal-lines'>
+        <h3 className='body-text project-type-text'>{data.type}</h3>
       </div>
-      <div className={`project-container ${data.className}`}>
-        <img
-          src={data.image}
-          alt={`${data.title} screenshot`}
-          className='project-image'
-        />
-        <div className='project-title-container'>
-          <h2 className='project-header body-text'>{data.title}</h2>
-          {/* <p className='project-body-text body-text'>{data.description}</p> */}
-        </div>
-        <div
-          className={`description-container ${
-            showFullDescription ? 'visible' : 'hidden'
-          }`}
-        >
-          <div
-            className='description-icon-button'
-            onClick={toggleFullDescription}
-          >
-            <img
-              src={InfoIcon}
-              alt='show description'
-              className='description-icon'
-            />
+      <div className='project-container' onClick={toggleFullDescription}>
+        <div className='project-image-wrapper'>
+          <div className='project-image-container'>
+            <img src={data.image} alt={data.title} className='project-image' />
           </div>
         </div>
+      </div>
+      <div className='project-title-container reveal-lines'>
+        <h3 className='body-text project-title-text'>{data.title}</h3>
+      </div>
+      <div className='project-body-text-container reveal-lines'>
+        <p className='body-text project-body-text'>{data.description}</p>
+        <a
+          href={data.link.link}
+          target='_blank'
+          rel='noopener noreferrer'
+          className='link-to-project'
+        >
+          {data.link.text}
+          {data.link.link ? (
+            <img
+              src={ExternalLinkIcon}
+              alt='external link'
+              className='external-link-icon'
+            />
+          ) : null}
+        </a>
       </div>
     </div>
   )

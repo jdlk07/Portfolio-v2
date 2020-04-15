@@ -3,20 +3,32 @@
   //Actual aspect ratio should be 1.6 but full screen screenshots can't be taken without the address bar taking up space which causes the hero to fill 100vh while taking the address bar into account.
   $projectWidth: $projectHeight * 1.8;
 
+  $projectWidthMobile: 100vw * 0.7;
+  $projectHeightMobile: $projectWidthMobile / 1.8;
+
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  // background-color: lightsalmon;
 
-  .project-type-header-container {
-    margin-bottom: 20px;
-    // background-color: blue;
+  @include mobile {
+    &:not(:last-of-type) {
+      margin-bottom: 150px;
+    }
+  }
+  // background-color: lightblue;
 
-    .project-type-header {
-      color: color(text2);
+  .project-header-container {
+    position: relative;
+    padding: 0 20px;
+    overflow: hidden;
+    // @include sideRevealLines;
+
+    .project-type-text {
       text-transform: uppercase;
+      font-weight: 500;
+      color: color(text1);
     }
   }
 
@@ -24,136 +36,112 @@
     position: relative;
     height: $projectHeight;
     width: $projectWidth;
-    margin: 10px;
-    background-color: #111111;
-    overflow: hidden;
-    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.609);
-    transition: 250ms;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    // background-color: lightsalmon;
+    margin-top: 40px;
+    box-sizing: border-box;
+
+    @include mobile {
+      width: $projectWidthMobile;
+      height: auto;
+    }
+  }
+
+  .project-image-wrapper {
+    position: relative;
+    height: 100%;
+    width: auto;
+    padding: 10px 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    // background-color: teal;
+
+    &:after,
+    &:before {
+      position: absolute;
+      content: '';
+      left: 0;
+      z-index: 2;
+      height: 50%;
+      width: 100%;
+      background-color: color(background);
+      transition-duration: 800ms;
+    }
 
     &:after {
-      content: '';
-      position: absolute;
-      top: 0;
       bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: rgba(0, 0, 0, 1);
-      opacity: 0.7;
-      transition: 250ms;
+      border-top: $revealLineWidth solid color(watermark);
     }
+    &:before {
+      top: 0;
+      border-bottom: $revealLineWidth solid color(watermark);
+    }
+  }
+
+  .project-image-container {
+    position: relative;
+    height: 100%;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 4px solid black;
+    border-radius: 5px;
 
     .project-image {
-      width: 100%;
       height: auto;
-      transform: translateY(0);
-      transition: 1s;
-    }
+      max-height: 100%;
+      width: auto;
+      max-width: 100%;
+      object-fit: cover;
 
-    &.gym-junkie {
-      .project-image {
-        width: 50%;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+  }
+
+  .project-title-container {
+    margin-top: 40px;
+
+    .project-title-text {
+      font-weight: 500;
+      color: color(text1);
+    }
+  }
+
+  .project-body-text-container {
+    margin: 25px 0;
+    max-width: 80%;
+
+    .project-body-text {
+      font-size: fontSize(mini);
+
+      @include mobile {
+        font-size: fontSizeMobile(mini);
       }
     }
 
-    .project-title-container {
-      position: absolute;
-      z-index: 1;
-      top: 40px;
-      left: 0;
-      height: 45px;
+    .link-to-project {
+      font-size: fontSize(mini);
+      color: color(text2);
+      font-weight: 500;
+      text-decoration: none;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      padding: 0 25px 0 15px;
-      border-radius: 0 20px 20px 0;
-      // justify-content: center;
-      // align-items: center;
-      background-color: color(navHighlight);
-      transition: 250ms;
-      // transform: translateY(0);
+      margin-top: 20px;
 
-      .project-header {
-        color: color(text1);
-        font-weight: 500;
-        letter-spacing: 1px;
-        // background-color: plum;
-        // border-bottom: 1px solid white;
+      .external-link-icon {
+        height: fontSize(mini);
+        width: auto;
+        margin-left: 20px;
       }
-    }
-  }
 
-  .description-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    .description-icon-button {
-      $buttonSize: 50px;
-      position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-left: 85%;
-      height: $buttonSize;
-      width: $buttonSize;
-      border-radius: 10px 10px 0 0;
-      background-color: color(navHighlight);
-      transition: 250ms;
-      transform: translateY(100%);
-      cursor: pointer;
-
-      .description-icon {
-        height: $buttonSize - 20px;
-        width: $buttonSize - 20px;
+      @include mobile {
+        font-size: fontSizeMobile(mini);
       }
-    }
-  }
-
-  &:hover {
-    .project-container {
-      transform: scale(1.1);
-      z-index: 2;
-      box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.609);
-
-      &:after {
-        opacity: 0;
-      }
-    }
-
-    .project-image {
-      transition: 8s;
-      transition-delay: 350ms;
-      transform: translateY(calc(-100% + #{$projectHeight}));
-    }
-
-    .project-title-container {
-      transform: translateX(-100%);
-    }
-
-    .description-icon-button {
-      transition-delay: 100ms;
-      transform: translateY(0);
-    }
-  }
-
-  .full-description-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: color(navHighlight);
-    opacity: 0;
-    transition: 250ms;
-
-    &.visible {
-      opacity: 0.4;
     }
   }
 }

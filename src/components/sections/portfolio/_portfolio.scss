@@ -1,4 +1,38 @@
 .portfolio-wrapper {
+  $revealLineWidth: 3px;
+
+  @mixin sideRevealLines {
+    &:after,
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 50%;
+      background-color: color(background);
+      // box-sizing: border-box;
+      transition-duration: 800ms;
+      transition-timing-function: cubic-bezier(0.36, 0.76, 0.01, 0.82);
+    }
+
+    &:before {
+      left: 0;
+      border-right: $revealLineWidth solid color(watermark);
+    }
+
+    &:after {
+      right: 0;
+      border-left: $revealLineWidth solid color(watermark);
+    }
+  }
+
+  .reveal-lines {
+    position: relative;
+    padding: 0 20px;
+    overflow: hidden;
+    @include sideRevealLines;
+  }
+
   .portfolio-container {
     display: flex;
     justify-content: center;
@@ -14,30 +48,10 @@
     height: 40px;
     width: auto;
     padding: 0 20px;
+    overflow: hidden;
     // background-color: teal;
 
-    &:after,
-    &:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      height: 100%;
-      width: 50%;
-      background-color: color(background);
-      box-sizing: border-box;
-      transition: 800ms;
-      transition-delay: 250ms;
-    }
-
-    &:before {
-      left: 0;
-      border-right: 3px solid color(watermark);
-    }
-
-    &:after {
-      right: 0;
-      border-left: 3px solid color(watermark);
-    }
+    // @include sideRevealLines;
   }
 
   .projects-wrapper {
@@ -46,17 +60,47 @@
     justify-content: space-evenly;
     width: 100%;
     margin: 100px 0;
+
+    @include mobile {
+      flex-wrap: wrap;
+    }
+
+    @import './project//project';
   }
 
-  @import './project//project';
-
   .portfolio-container.visible {
-    .header-container {
+    .reveal-lines {
       &:before {
-        transform: translateX(-100%);
+        transform: translateX(calc(-100% + #{$revealLineWidth}));
       }
       &:after {
-        transform: translateX(100%);
+        transform: translateX(calc(100% - #{$revealLineWidth}));
+      }
+    }
+
+    .project-image-wrapper {
+      &:before {
+        transform: translateY(-100%);
+      }
+      &:after {
+        transform: translateY(100%);
+      }
+    }
+  }
+
+  $revealedClasses: (
+    0 'header-container',
+    1 'project-header-container',
+    2 'project-image-wrapper',
+    3 'project-title-container',
+    4 'project-body-text-container'
+  );
+
+  @each $order, $className in $revealedClasses {
+    .#{$className} {
+      &:after,
+      &:before {
+        transition-delay: $order * 450ms;
       }
     }
   }

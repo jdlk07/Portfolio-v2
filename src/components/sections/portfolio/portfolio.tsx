@@ -31,7 +31,7 @@ const Portfolio = ({ setActiveSection }: IsProps) => {
             partialVisibility
             onChange={onVisibilityChange}
           >
-            <div className='header-container'>
+            <div className='header-container reveal-lines'>
               <h2 className='header'>Portfolio</h2>
             </div>
           </ReactVisibilitySensor>

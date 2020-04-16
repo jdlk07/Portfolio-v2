@@ -12,6 +12,7 @@
 
   .body-text-container {
     max-width: 620px;
+    overflow: hidden;
 
     @include mobile {
       max-width: 280px;
@@ -27,10 +28,15 @@
   .bottom-text-container {
     margin-left: 33.3%;
     margin-top: 150px;
+    overflow: hidden;
 
     @include mobile {
       margin-left: 0;
       margin-top: 200px;
+    }
+
+    .bottom-text-header {
+      display: inline-block;
     }
 
     .bottom-text {
@@ -105,6 +111,46 @@
       100% {
         background-position: -200% 0;
       }
+    }
+  }
+
+  $itemsToTranslate: (
+    0 'header-bar',
+    1 'section-header-text',
+    2 'subheader',
+    3 'body-text',
+    4 'bottom-text-header',
+    5 'bottom-text-bar',
+    6 'name-value-container.container-0',
+    7 'name-value-container.container-1'
+  );
+
+  @each $order, $className in $itemsToTranslate {
+    .#{$className} {
+      transition-duration: 800ms;
+      transform: translateX(-100%);
+      transition-timing-function: cubic-bezier(0.11, 1.01, 0.67, 1);
+      transition-delay: $order * 200ms;
+    }
+  }
+
+  .globe {
+    opacity: 0;
+    transition-duration: 800ms;
+    transition-delay: 1500ms;
+    transform: scale(0.8);
+  }
+
+  &.visible {
+    @each $order, $className in $itemsToTranslate {
+      .#{$className} {
+        transform: translateX(0);
+      }
+    }
+
+    .globe {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 }

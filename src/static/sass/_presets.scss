@@ -27,6 +27,8 @@ $fontSizesMobile: (
   mini: 0.72rem,
 );
 
+$power-ease: cubic-bezier(0.01, 1.02, 0.83, 1.01);
+
 @function color($color-name) {
   @return map-get($colors, $color-name);
 }

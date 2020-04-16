@@ -6,10 +6,20 @@ import { HelpingHand } from './helpingHand/helpingHand'
 
 interface IsProps {
   setActiveSection: (section: string) => void
+  showApp: boolean
 }
 
-export const Contact = ({ setActiveSection }: IsProps) => {
+export const Contact = ({ setActiveSection, showApp }: IsProps) => {
   const [showFullDescription, toggleFullDescription] = useState(false)
+
+  const [visible, setVisibility] = useState(false)
+
+  const onVisible = (isVisible: boolean) => {
+    if (isVisible) {
+      setVisibility(isVisible)
+      setActiveSection(data.header.toLowerCase())
+    }
+  }
 
   const backdropOnClick = () => {
     if (showFullDescription) {
@@ -18,13 +28,15 @@ export const Contact = ({ setActiveSection }: IsProps) => {
   }
 
   return (
-    <Element name='contact-screen'>
+    <Element
+      name={`contact-screen ${visible && showApp ? 'visible' : 'hidden'}`}
+    >
       <div
         className='contact-wrapper section-wrapper'
         onClick={backdropOnClick}
       >
         <div className='contact-container section-container'>
-          <SectionHeader header={data.header} onVisible={setActiveSection} />
+          <SectionHeader header={data.header} onVisible={onVisible} />
           <p className='body-text'>{data.body}</p>
           <div className='contact-links-wrapper'>
             <a

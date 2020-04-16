@@ -10,6 +10,7 @@ import About from './sections/about/about'
 import Portfolio from './sections/portfolio/portfolio'
 import { TechStack } from './sections/techstack/techstack'
 import { Contact } from './sections/contact/contact'
+import { LoadingScreen } from './generalComponents/loadingScreen/loadingScreen'
 
 const sections = [
   {
@@ -38,17 +39,22 @@ interface IsProps {}
 
 interface IsState {
   loading: boolean
+  showApp: boolean
   showSideContact: boolean
   activeSection: string
 }
 
 export default class App extends PureComponent<IsProps, IsState> {
+  private sideContactOnLoadTimer: any
+  private onLoadTimer: any
+
   constructor(props: IsProps) {
     super(props)
 
     this.state = {
-      loading: false,
-      showSideContact: true,
+      loading: true,
+      showApp: false,
+      showSideContact: false,
       activeSection: 'home',
     }
   }
@@ -59,6 +65,20 @@ export default class App extends PureComponent<IsProps, IsState> {
 
   changeActiveSection = (section: string) => {
     this.setState({ activeSection: section })
+  }
+
+  onLoadComplete = () => {
+    this.setState({ loading: false })
+    this.sideContactOnLoadTimer = setTimeout(
+      () => this.setState({ showSideContact: true }),
+      2500
+    )
+  }
+
+  onLoadingScreenTransitionEnd = () => this.setState({ showApp: true })
+
+  componentDidMount() {
+    this.onLoadTimer = setTimeout(this.onLoadComplete, 2000)
   }
 
   componentDidUpdate(prevProps: IsProps, prevState: IsState) {
@@ -74,17 +94,28 @@ export default class App extends PureComponent<IsProps, IsState> {
     }
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.sideContactOnLoadTimer)
+    clearTimeout(this.onLoadTimer)
+  }
+
   render() {
-    let { showSideContact, activeSection } = this.state
+    let { showSideContact, activeSection, loading, showApp } = this.state
+
     return (
       <div className='app'>
+        <LoadingScreen
+          visible={loading}
+          showApp={this.onLoadingScreenTransitionEnd}
+        />
         <MediaQuery minWidth={mobileWidth + 1}>
-          <DesktopNavBar activeSection={activeSection} />
+          <DesktopNavBar activeSection={activeSection} showApp={showApp} />
         </MediaQuery>
         <VerticalBackgroundLines />
         <SideContactBar visible={showSideContact} />
         {sections.map((section) => (
           <section.Component
+            showApp={showApp}
             key={section.name}
             setActiveSection={this.changeActiveSection}
           />

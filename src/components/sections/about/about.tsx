@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Element } from 'react-scroll'
 import SectionHeader from '../../generalComponents/sectionHeader/sectionHeader'
 import { data } from './data'
@@ -6,15 +6,28 @@ import LinesWithPlanes from '../../generalComponents/backgroundLines/linesWithPl
 
 interface IsProps {
   setActiveSection: (section: string) => void
+  showApp: boolean
 }
 
-const About = ({ setActiveSection }: IsProps) => {
-  console.log('about updated')
+const About = ({ setActiveSection, showApp }: IsProps) => {
+  const [visible, setVisibility] = useState(false)
+
+  const onVisible = (isVisible: boolean) => {
+    if (isVisible) {
+      setVisibility(isVisible)
+      setActiveSection(data.header.toLowerCase())
+    }
+  }
+
   return (
     <Element name='about-screen'>
-      <div className='about-wrapper section-wrapper'>
+      <div
+        className={`about-wrapper section-wrapper ${
+          visible && showApp ? 'visible' : 'hidden'
+        }`}
+      >
         <div className='about-container section-container'>
-          <SectionHeader header={data.header} onVisible={setActiveSection} />
+          <SectionHeader header={data.header} onVisible={onVisible} />
           <div className='body-text-container'>
             <p className='subheader body-text'>{data.subheader}</p>
             <p className='body-text'>{data.body}</p>
@@ -25,7 +38,7 @@ const About = ({ setActiveSection }: IsProps) => {
             </p>
             <span className='bottom-text-bar' />
             {data.bottomText.body.map((item, i) => (
-              <div className='name-value-container'>
+              <div key={i} className={`name-value-container container-${i}`}>
                 <p className='bottom-text-name bottom-text'>{item.name}</p>
                 <p className='bottom-text-value bottom-text'>{item.value}</p>
               </div>

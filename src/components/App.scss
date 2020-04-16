@@ -16,6 +16,7 @@
   /* Hide scrollbar for IE and Edge */
   -ms-overflow-style: none;
 
+  @import './generalComponents/loadingScreen//loadingScreen';
   @import './generalComponents/backgroundLines/verticalBackgroundLines/verticalBackgroundLines';
   @import './generalComponents/sideContactBar/sideContactBar';
   @import './generalComponents/desktopNavBar/desktopNavBar';

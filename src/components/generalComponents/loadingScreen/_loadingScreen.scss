@@ -1,0 +1,134 @@
+.loading-screen-wrapper {
+  $box-size: 280px;
+  $anime-time: 5s;
+  $clip-distance: 0.05;
+  $clip-size: $box-size * (1 + $clip-distance * 2);
+  $path-width: 2px;
+  $main-color: color(navHighlight);
+  $loading-container-animation-duration: 500ms;
+
+  $box-sizeMobile: 180px;
+  $clip-sizeMobile: $box-sizeMobile * (1 + $clip-distance * 2);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  background-color: #0f222b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 500ms;
+  transition-delay: $loading-container-animation-duration;
+
+  .loading-screen-message-container {
+    position: relative;
+    height: $box-size;
+    width: $box-size;
+    border: 2px solid $main-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $main-color;
+    transition: $loading-container-animation-duration;
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: '';
+      z-index: -1;
+      margin: -1 * $clip-distance * 100%;
+      box-shadow: inset 0 0 0 $path-width;
+      animation-name: clipMe;
+      animation-duration: $anime-time;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    &::before {
+      animation-delay: $anime-time * -0.5;
+    }
+    @include mobile {
+      height: $box-sizeMobile;
+      width: $box-sizeMobile;
+
+      &:before,
+      &:after {
+        animation-name: clipMeMobile;
+      }
+    }
+
+    .loading-text {
+      text-transform: uppercase;
+      animation: loading-text-animation 1.5s ease-in-out infinite;
+    }
+  }
+
+  &.hidden {
+    transform: translateY(-100%);
+
+    .loading-screen-message-container {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+  }
+
+  @include keyframes(loading-text-animation) {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @include keyframes(clipMe) {
+    0%,
+    100% {
+      clip: rect(0px, $clip-size, $path-width, 0px);
+    }
+    25% {
+      clip: rect(0px, $path-width, $clip-size, 0px);
+    }
+    50% {
+      clip: rect($clip-size - $path-width, $clip-size, $clip-size, 0px);
+    }
+    75% {
+      clip: rect(0px, $clip-size, $clip-size, $clip-size - $path-width);
+    }
+  }
+  @include keyframes(clipMeMobile) {
+    0%,
+    100% {
+      clip: rect(0px, $clip-sizeMobile, $path-width, 0px);
+    }
+    25% {
+      clip: rect(0px, $path-width, $clip-sizeMobile, 0px);
+    }
+    50% {
+      clip: rect(
+        $clip-sizeMobile - $path-width,
+        $clip-sizeMobile,
+        $clip-sizeMobile,
+        0px
+      );
+    }
+    75% {
+      clip: rect(
+        0px,
+        $clip-sizeMobile,
+        $clip-sizeMobile,
+        $clip-sizeMobile - $path-width
+      );
+    }
+  }
+}

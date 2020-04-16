@@ -40,15 +40,16 @@ const navItems = [
 
 interface IsProps {
   activeSection: string
+  showApp: boolean
 }
 
-const DesktopNavBar = ({ activeSection }: IsProps) => {
+const DesktopNavBar = ({ activeSection, showApp }: IsProps) => {
   const activeIndex = navItems.findIndex((item) => item.name === activeSection)
 
   const blobTranslateY = `translateY(${activeIndex * 100}%)`
 
   return (
-    <div className='desktop-navbar-wrapper'>
+    <div className={`desktop-navbar-wrapper ${showApp ? 'visible' : 'hidden'}`}>
       <ul className='nav-container'>
         <div className='blob-wrapper' style={{ transform: blobTranslateY }}>
           <span className='active-blob' />

@@ -163,4 +163,12 @@
       }
     }
   }
+
+  &.hidden {
+    transform: translateX(-100%);
+  }
+
+  &.visible {
+    transform: translateX(0);
+  }
 }

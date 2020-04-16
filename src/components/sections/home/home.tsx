@@ -10,6 +10,7 @@ import ReactVisibilitySensor from 'react-visibility-sensor'
 
 interface IsProps {
   setActiveSection: (section: string) => void
+  showApp: boolean
 }
 
 interface IsState {
@@ -52,7 +53,17 @@ export default class Home extends PureComponent<IsProps, IsState> {
   }
 
   componentDidMount() {
-    this.startActiveIndexTimer()
+    if (this.props.showApp) {
+      this.startActiveIndexTimer()
+    }
+  }
+
+  componentDidUpdate(prevProps: IsProps, prevState: IsState) {
+    let { showApp } = this.props
+
+    if (showApp != prevProps.showApp && showApp) {
+      this.startActiveIndexTimer()
+    }
   }
 
   componentWillUnmount() {
@@ -62,9 +73,11 @@ export default class Home extends PureComponent<IsProps, IsState> {
   render() {
     let { activeIndex } = this.state
 
+    let { showApp } = this.props
+
     return (
       <Element name='home-screen'>
-        <div className='home-wrapper'>
+        <div className={`home-wrapper ${showApp ? 'visible' : 'hidden'}`}>
           <div className='home-container section-container'>
             <BackgroundCircle activeIndex={activeIndex} />
             <ReactVisibilitySensor partialVisibility onChange={this.onVisible}>

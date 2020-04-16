@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Parallax, withController } from 'react-scroll-parallax'
 import MediaQuery from 'react-responsive'
 
@@ -64,16 +64,32 @@ const MobileStacks = ({ stackData }: DesktopStacksProps) => (
 interface IsProps {
   parallaxController: any
   setActiveSection: (section: string) => void
+  showApp: boolean
 }
 
-const _TechStack = ({ parallaxController, setActiveSection }: IsProps) => {
+const _TechStack = ({
+  parallaxController,
+  setActiveSection,
+  showApp,
+}: IsProps) => {
+  const [visible, setVisibility] = useState(false)
+
+  const onVisible = (isVisible: boolean) => {
+    if (isVisible) {
+      setVisibility(isVisible)
+      setActiveSection('tech stack')
+    }
+  }
+
   const updateParallaxController = () => parallaxController.update()
 
   return (
-    <Element name='tech-stack-screen'>
+    <Element
+      name={`tech-stack-screen ${visible && showApp ? 'visible' : 'hidden'}`}
+    >
       <div className='tech-stack-wrapper section-wrapper'>
         <div className='tech-stack-container section-container'>
-          <SectionHeader header='Tech Stack' onVisible={setActiveSection} />
+          <SectionHeader header='Tech Stack' onVisible={onVisible} />
           <div className='subheader-container'>
             {data.roles.map((role) => (
               <p className='subheader-text'>{role}</p>

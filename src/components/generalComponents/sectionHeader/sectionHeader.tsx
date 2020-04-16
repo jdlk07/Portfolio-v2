@@ -3,14 +3,12 @@ import ReactVisibilitySensor from 'react-visibility-sensor'
 
 interface IsProps {
   header: String
-  onVisible: (name: string) => void
+  onVisible: (isVisible: boolean) => void
 }
 
 const SectionHeader = ({ header, onVisible }: IsProps) => {
   const onVisibilityChange = (isVisible: boolean) => {
-    if (isVisible) {
-      onVisible(header.toLowerCase())
-    }
+    onVisible(isVisible)
   }
 
   return (

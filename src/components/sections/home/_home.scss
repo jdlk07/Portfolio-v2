@@ -31,6 +31,7 @@
       z-index: 2;
       margin-top: 13%;
       max-width: 440px;
+      overflow: hidden;
 
       @include mobile {
         margin-top: 23%;
@@ -67,7 +68,6 @@
         color: color(text2);
         text-transform: uppercase;
         margin-top: 32px;
-        transition: 250ms;
         z-index: 1;
 
         @include mobile {
@@ -101,17 +101,20 @@
     .bottom-text-wrapper {
       width: 100%;
       height: 18%;
-      // background-color: #fff;
+      padding-left: 30%;
+      overflow: hidden;
+      // background-color: lightsalmon;
+      // display: inline-block;
 
       @include mobile {
         height: 28%;
       }
 
       .bottom-text-container {
-        margin-left: 30%;
+        // margin-left: 30%;
         margin-bottom: 10px;
         // height: 50px;
-        // width: 50px;
+        // width: auto;
         // background-color: plum;
         display: flex;
 
@@ -144,6 +147,58 @@
           opacity: 0.7;
           letter-spacing: 1px;
         }
+      }
+    }
+  }
+
+  $itemsToAnimate: (
+    0 'header',
+    1 'body-text',
+    2 'read-more-button',
+    3 'inner-circle',
+    4 'bottom-text-container:nth-of-type(1)',
+    5 'bottom-text-container:nth-of-type(2)'
+  );
+
+  $itemsToTranslate: (0 'header', 1 'body-text', 2 'read-more-button');
+
+  @each $order, $className in $itemsToTranslate {
+    .#{$className} {
+      transform: translateX(-100%);
+    }
+  }
+
+  @each $order, $className in $itemsToAnimate {
+    .#{$className} {
+      transition-duration: 800ms;
+      transition-timing-function: $power-ease;
+      transition-delay: $order * 250ms;
+    }
+  }
+
+  .background-circle-wrapper {
+    .inner-circle {
+      opacity: 0;
+      transform: scale(0.6);
+    }
+  }
+
+  .bottom-text-container {
+    opacity: 0;
+  }
+
+  &.visible {
+    @each $order, $className in $itemsToAnimate {
+      .#{$className} {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .background-circle-wrapper {
+      .inner-circle {
+        opacity: 1;
+        transform: scale(1);
       }
     }
   }

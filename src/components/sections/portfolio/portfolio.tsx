@@ -7,9 +7,10 @@ import ReactVisibilitySensor from 'react-visibility-sensor'
 
 interface IsProps {
   setActiveSection: (section: string) => void
+  showApp: boolean
 }
 
-const Portfolio = ({ setActiveSection }: IsProps) => {
+const Portfolio = ({ setActiveSection, showApp }: IsProps) => {
   const [visible, changeVisibilityState] = useState(false)
 
   const onVisibilityChange = (isVisible: boolean) => {
@@ -24,7 +25,7 @@ const Portfolio = ({ setActiveSection }: IsProps) => {
       <div className='portfolio-wrapper section-wrapper'>
         <div
           className={`portfolio-container section-container ${
-            visible ? 'visible' : 'hidden'
+            visible && showApp ? 'visible' : 'hidden'
           }`}
         >
           <ReactVisibilitySensor

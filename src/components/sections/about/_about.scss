@@ -13,7 +13,7 @@
   }
 
   .body-text-container {
-    max-width: 620px;
+    max-width: 580px;
     overflow: hidden;
 
     @include mobile {
@@ -24,6 +24,10 @@
       margin-bottom: 15px;
       color: color(text1);
       font-weight: 500;
+    }
+
+    .body:nth-of-type(2) {
+      margin-bottom: 20px;
     }
   }
 
@@ -120,11 +124,12 @@
     0 'header-bar',
     1 'section-header-text',
     2 'subheader',
-    3 'body-text',
-    4 'bottom-text-header',
-    5 'bottom-text-bar',
-    6 'name-value-container.container-0',
-    7 'name-value-container.container-1'
+    3 'body:nth-of-type(2)',
+    4 'body:nth-of-type(3)',
+    5 'bottom-text-header',
+    6 'bottom-text-bar',
+    7 'name-value-container.container-0',
+    8 'name-value-container.container-1'
   );
 
   @each $order, $className in $itemsToTranslate {

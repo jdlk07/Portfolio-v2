@@ -9,31 +9,14 @@ import { data } from './data'
 
 import TechStackWatermark from '../../../static/otherIcons/tech-stack-bg.svg'
 import { mobileWidth } from '../../../static/sharedVariables'
-
-interface StackProps {
-  stackData: {
-    title: string
-    body: Array<string>
-  }
-}
-
-const Stack = ({ stackData }: StackProps) => (
-  <div className='stack-container'>
-    <h2 className='stack-header'>{stackData.title}</h2>
-    <span className='seperator-line' />
-    <ul className='stack-body-list-container'>
-      {stackData.body.map((item) => (
-        <li className='stack-list-item body-text'>{item}</li>
-      ))}
-    </ul>
-  </div>
-)
+import { Stack } from './stack/stack'
 
 interface DesktopStacksProps {
   stackData: Array<{ title: string; body: Array<string> }>
+  showApp: boolean
 }
 
-const DesktopStacks = ({ stackData }: DesktopStacksProps) => {
+const DesktopStacks = ({ stackData, showApp }: DesktopStacksProps) => {
   const stacksRow1 = stackData.slice(0, 3)
   const stacksRow2 = stackData.slice(3)
 
@@ -41,22 +24,22 @@ const DesktopStacks = ({ stackData }: DesktopStacksProps) => {
     <div className='stack-rows-wrapper'>
       <div className='stack-row-1 stack-row'>
         {stacksRow1.map((stack) => (
-          <Stack stackData={stack} />
+          <Stack showApp={showApp} stackData={stack} />
         ))}
       </div>
       <div className='stack-row-2 stack-row'>
         {stacksRow2.map((stack) => (
-          <Stack stackData={stack} />
+          <Stack showApp={showApp} stackData={stack} />
         ))}
       </div>
     </div>
   )
 }
 
-const MobileStacks = ({ stackData }: DesktopStacksProps) => (
+const MobileStacks = ({ stackData, showApp }: DesktopStacksProps) => (
   <div className='stack-rows-wrapper'>
     {stackData.map((stack) => (
-      <Stack stackData={stack} />
+      <Stack showApp={showApp} stackData={stack} />
     ))}
   </div>
 )
@@ -84,10 +67,12 @@ const _TechStack = ({
   const updateParallaxController = () => parallaxController.update()
 
   return (
-    <Element
-      name={`tech-stack-screen ${visible && showApp ? 'visible' : 'hidden'}`}
-    >
-      <div className='tech-stack-wrapper section-wrapper'>
+    <Element name='tech-stack-screen'>
+      <div
+        className={`tech-stack-wrapper section-wrapper ${
+          visible && showApp ? 'visible' : 'hidden'
+        }`}
+      >
         <div className='tech-stack-container section-container'>
           <SectionHeader header='Tech Stack' onVisible={onVisible} />
           <div className='subheader-container'>
@@ -98,9 +83,9 @@ const _TechStack = ({
           <MediaQuery minDeviceWidth={mobileWidth}>
             {(isDesktop) =>
               isDesktop ? (
-                <DesktopStacks stackData={data.stack} />
+                <DesktopStacks showApp={showApp} stackData={data.stack} />
               ) : (
-                <MobileStacks stackData={data.stack} />
+                <MobileStacks showApp={showApp} stackData={data.stack} />
               )
             }
           </MediaQuery>

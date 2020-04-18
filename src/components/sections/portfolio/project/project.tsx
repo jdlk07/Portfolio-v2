@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 
-import ExternalLinkIcon from '../../../../static/otherIcons/external-link.svg'
-
 interface IsProps {
   data: {
     type: string
@@ -9,7 +7,7 @@ interface IsProps {
     className: string
     title: string
     description: string
-    link: { text: string; link?: string }
+    link: { text: string; link?: string; icon: string }
   }
 }
 
@@ -42,13 +40,11 @@ export const Project = React.memo(({ data }: IsProps) => {
           className='link-to-project'
         >
           {data.link.text}
-          {data.link.link ? (
-            <img
-              src={ExternalLinkIcon}
-              alt='external link'
-              className='external-link-icon'
-            />
-          ) : null}
+          <img
+            src={data.link.icon}
+            alt='external link'
+            className='external-link-icon'
+          />
         </a>
       </div>
     </div>

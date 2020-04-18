@@ -30,8 +30,8 @@ const About = ({ setActiveSection, showApp }: IsProps) => {
           <SectionHeader header={data.header} onVisible={onVisible} />
           <div className='body-text-container'>
             <p className='subheader body-text'>{data.subheader}</p>
-            <p className='body body-text'>{data.body[0]}</p>
-            <p className='body body-text'>{data.body[1]}</p>
+            <p className='main-body-text body-text'>{data.body[0]}</p>
+            <p className='main-body-text body-text'>{data.body[1]}</p>
           </div>
           <div className='bottom-text-container'>
             <p className='bottom-text-header bottom-text'>

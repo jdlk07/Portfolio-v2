@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { LoadingText } from './loadingText'
+
+const loadingText = ['Web', 'App', 'React', 'Developer']
 
 interface IsProps {
-  visible: boolean
   showApp: () => void
 }
 
-export const LoadingScreen = React.memo(({ visible, showApp }: IsProps) => {
-  const [mounted, setMounted] = useState(visible)
+export const LoadingScreen = React.memo(({ showApp }: IsProps) => {
+  const [mounted, setMounted] = useState(true)
+
+  const [textAnimating, setTextAnimating] = useState(true)
+
+  const onTextAnimatingComplete = () => setTextAnimating(false)
 
   const onTransitionEnd = (e: any) => {
     showApp()
@@ -19,14 +25,19 @@ export const LoadingScreen = React.memo(({ visible, showApp }: IsProps) => {
 
   return (
     <div
-      className={`loading-screen-wrapper ${visible ? 'visible' : 'hidden'}`}
+      className={`loading-screen-wrapper ${
+        textAnimating ? 'visible' : 'hidden'
+      }`}
       onTransitionEnd={onTransitionEnd}
     >
       <div
         className='loading-screen-message-container'
         onTransitionEnd={(e) => e.stopPropagation()}
       >
-        <h2 className='loading-text header'>loading</h2>
+        <LoadingText
+          textArray={loadingText}
+          onTextAnimatingComplete={onTextAnimatingComplete}
+        />
       </div>
     </div>
   )

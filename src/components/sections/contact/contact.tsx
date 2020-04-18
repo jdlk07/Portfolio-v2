@@ -28,25 +28,27 @@ export const Contact = ({ setActiveSection, showApp }: IsProps) => {
   }
 
   return (
-    <Element
-      name={`contact-screen ${visible && showApp ? 'visible' : 'hidden'}`}
-    >
+    <Element name='contact-screen'>
       <div
-        className='contact-wrapper section-wrapper'
+        className={`contact-wrapper section-wrapper ${
+          visible && showApp ? 'visible' : 'hidden'
+        }`}
         onClick={backdropOnClick}
       >
         <div className='contact-container section-container'>
           <SectionHeader header={data.header} onVisible={onVisible} />
           <p className='body-text'>{data.body}</p>
           <div className='contact-links-wrapper'>
-            <a
-              href={data.email.link}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='email-link'
-            >
-              {data.email.name}
-            </a>
+            <div className='email-link-container'>
+              <a
+                href={data.email.link}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='email-link'
+              >
+                {data.email.name}
+              </a>
+            </div>
             <div className='contact-links-container'>
               {data.contactLinks.map((contact, i) => (
                 <a

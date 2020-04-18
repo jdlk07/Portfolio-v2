@@ -38,7 +38,6 @@ const sections = [
 interface IsProps {}
 
 interface IsState {
-  loading: boolean
   showApp: boolean
   showSideContact: boolean
   activeSection: string
@@ -46,13 +45,11 @@ interface IsState {
 
 export default class App extends PureComponent<IsProps, IsState> {
   private sideContactOnLoadTimer: any
-  private onLoadTimer: any
 
   constructor(props: IsProps) {
     super(props)
 
     this.state = {
-      loading: true,
       showApp: false,
       showSideContact: false,
       activeSection: 'home',
@@ -67,18 +64,24 @@ export default class App extends PureComponent<IsProps, IsState> {
     this.setState({ activeSection: section })
   }
 
+  //onLoadComplete controlled by end of loading text animation.
   onLoadComplete = () => {
-    this.setState({ loading: false })
-    this.sideContactOnLoadTimer = setTimeout(
-      () => this.setState({ showSideContact: true }),
-      2500
-    )
+    if (this.state.activeSection !== 'contact') {
+      this.sideContactOnLoadTimer = setTimeout(
+        () => this.setState({ showSideContact: true }),
+        2500
+      )
+    }
   }
 
-  onLoadingScreenTransitionEnd = () => this.setState({ showApp: true })
-
-  componentDidMount() {
-    this.onLoadTimer = setTimeout(this.onLoadComplete, 2000)
+  onLoadingScreenTransitionEnd = () => {
+    this.setState({ showApp: true })
+    if (this.state.activeSection !== 'contact') {
+      this.sideContactOnLoadTimer = setTimeout(
+        () => this.setState({ showSideContact: true }),
+        2500
+      )
+    }
   }
 
   componentDidUpdate(prevProps: IsProps, prevState: IsState) {
@@ -96,18 +99,14 @@ export default class App extends PureComponent<IsProps, IsState> {
 
   componentWillUnmount() {
     clearTimeout(this.sideContactOnLoadTimer)
-    clearTimeout(this.onLoadTimer)
   }
 
   render() {
-    let { showSideContact, activeSection, loading, showApp } = this.state
+    let { showSideContact, activeSection, showApp } = this.state
 
     return (
       <div className='app'>
-        <LoadingScreen
-          visible={loading}
-          showApp={this.onLoadingScreenTransitionEnd}
-        />
+        <LoadingScreen showApp={this.onLoadingScreenTransitionEnd} />
         <MediaQuery minWidth={mobileWidth + 1}>
           <DesktopNavBar activeSection={activeSection} showApp={showApp} />
         </MediaQuery>

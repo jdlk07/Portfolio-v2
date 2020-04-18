@@ -64,9 +64,33 @@
       }
     }
 
+    .loading-text-viewbox {
+      position: relative;
+      height: 40px;
+      width: 100%;
+      // background-color: teal;
+      overflow: hidden;
+    }
+
+    .loading-text-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // background-color: salmon;
+      // animation: loading-text-animation 4s linear forwards;
+    }
+
     .loading-text {
+      // background-color: lightsalmon;
       text-transform: uppercase;
-      animation: loading-text-animation 1.5s ease-in-out infinite;
+      // animation: loading-text-animation 1.5s ease-in-out infinite;
     }
   }
 
@@ -79,17 +103,17 @@
     }
   }
 
-  @include keyframes(loading-text-animation) {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+  // @include keyframes(loading-text-animation) {
+  //   0% {
+  //     opacity: 1;
+  //   }
+  //   50% {
+  //     opacity: 0;
+  //   }
+  //   100% {
+  //     opacity: 1;
+  //   }
+  // }
 
   @include keyframes(clipMe) {
     0%,

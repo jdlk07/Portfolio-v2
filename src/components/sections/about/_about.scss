@@ -13,6 +13,8 @@
   }
 
   .body-text-container {
+    position: relative;
+    z-index: 2;
     max-width: 580px;
     overflow: hidden;
 
@@ -26,7 +28,7 @@
       font-weight: 500;
     }
 
-    .body:nth-of-type(2) {
+    .main-body-text:not(:last-of-type) {
       margin-bottom: 20px;
     }
   }
@@ -94,6 +96,7 @@
     bottom: 140px;
     height: $globeSize;
     width: $globeSize;
+    z-index: 1;
     border-radius: 50%;
     // background-color: teal;
     // border: 1px solid color(watermark);
@@ -107,7 +110,7 @@
     @include mobile {
       height: $globeSizeMobile;
       width: $globeSizeMobile;
-      bottom: 185px;
+      bottom: 135px;
     }
 
     @include keyframes(globe-animation) {
@@ -124,8 +127,8 @@
     0 'header-bar',
     1 'section-header-text',
     2 'subheader',
-    3 'body:nth-of-type(2)',
-    4 'body:nth-of-type(3)',
+    3 'main-body-text:nth-of-type(2)',
+    4 'main-body-text:nth-of-type(3)',
     5 'bottom-text-header',
     6 'bottom-text-bar',
     7 'name-value-container.container-0',

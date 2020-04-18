@@ -1,5 +1,7 @@
 import WinfieldSportsScreenshot from '../../../static/portfolio/winfield-sports.png'
 import GymJunkieScreenshot from '../../../static/portfolio/gym-junkie.png'
+import ExternalLinkIcon from '../../../static/otherIcons/external-link.svg'
+import PlaystoreIcon from '../../../static/otherIcons/playstore.svg'
 
 export const data = {
   projects: [
@@ -13,6 +15,7 @@ export const data = {
       link: {
         text: 'Visit website',
         link: 'https://www.winfieldsports.net',
+        icon: ExternalLinkIcon,
       },
     },
     {
@@ -25,6 +28,7 @@ export const data = {
       link: {
         text: 'Coming this summer to play store',
         // link: null,
+        icon: PlaystoreIcon,
       },
     },
   ],

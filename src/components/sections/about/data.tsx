@@ -1,9 +1,9 @@
 export const data = {
   header: 'About',
-  subheader: "Hi, I'm Janath",
+  subheader: 'A Full Stack Developer / Traveller',
   body: [
-    'After being a professional world traveller for almost 9 years, I went back to my roots of technology.',
-    "I now spend my days looking for ways to integrate technology seamlessly into our everyday lives through computers and mobile phones. I've had amazing opportunities to work on websites, web applications, and most recently mobile applications.",
+    "I believe in creating fluid experiences across web and mobile applications to effectively establish your business, brand, or product's online identity.",
+    "When I'm not spending my days looking for newer and more efficient ways of intergrating technology into our everyday lives, I usually travel. I was a professional world traveller for close to 9 years before i returned to my roots of being a developer.",
   ],
   bottomText: {
     header: 'visited',

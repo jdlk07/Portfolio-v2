@@ -1,5 +1,3 @@
-import ReactLogo from '../../../static/images/react-logo.svg'
-
 export const data = {
   titles: [
     'Full Stack Developer',
@@ -8,7 +6,6 @@ export const data = {
     'App Developer',
   ],
   header: 'Janath Perera',
-  circleImages: [ReactLogo],
   statement: 'Creating seamless interactions between humans and machines.',
   bottomText: ['web', 'mobile'],
 }

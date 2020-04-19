@@ -84,10 +84,6 @@ export default class App extends PureComponent<IsProps, IsState> {
     }
   }
 
-  componentDidMount() {
-    document.title = 'Janath Perera'
-  }
-
   componentDidUpdate(prevProps: IsProps, prevState: IsState) {
     let { activeSection } = this.state
 

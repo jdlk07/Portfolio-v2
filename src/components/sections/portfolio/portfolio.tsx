@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Project } from './project/project'
 import { Element } from 'react-scroll'
 import { data } from './data'
-import { LinesWithCircles } from '../../generalComponents/backgroundLines/linesWithCircles/linesWithCircles'
 import ReactVisibilitySensor from 'react-visibility-sensor'
 
 interface IsProps {
@@ -38,11 +37,10 @@ const Portfolio = ({ setActiveSection, showApp }: IsProps) => {
           </ReactVisibilitySensor>
           <div className='projects-wrapper'>
             {data.projects.map((project, i) => (
-              <Project data={project} />
+              <Project key={i} data={project} />
             ))}
           </div>
         </div>
-        {/* <LinesWithCircles /> */}
       </div>
     </Element>
   )

@@ -61,7 +61,7 @@ export default class Home extends PureComponent<IsProps, IsState> {
   componentDidUpdate(prevProps: IsProps, prevState: IsState) {
     let { showApp } = this.props
 
-    if (showApp != prevProps.showApp && showApp) {
+    if (showApp !== prevProps.showApp && showApp) {
       this.startActiveIndexTimer()
     }
   }

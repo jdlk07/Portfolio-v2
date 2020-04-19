@@ -56,6 +56,7 @@ const DesktopNavBar = ({ activeSection, showApp }: IsProps) => {
         </div>
         {navItems.map((item, i) => (
           <Link
+            key={i}
             to={item.link}
             offset={item.offset || 0}
             smooth

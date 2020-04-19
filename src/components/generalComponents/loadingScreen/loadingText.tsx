@@ -42,14 +42,13 @@ export const LoadingText = React.memo(
       <div className='loading-text-viewbox'>
         {textArray.map((text, i) => (
           <div
+            key={text}
             className='loading-text-container'
             ref={(elem) => {
               textItemsRefs.current[i] = elem
             }}
           >
-            <h2 key={text} className='loading-text header'>
-              {text}
-            </h2>
+            <h2 className='loading-text header'>{text}</h2>
           </div>
         ))}
       </div>

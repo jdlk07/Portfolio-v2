@@ -23,13 +23,13 @@ const DesktopStacks = ({ stackData, showApp }: DesktopStacksProps) => {
   return (
     <div className='stack-rows-wrapper'>
       <div className='stack-row-1 stack-row'>
-        {stacksRow1.map((stack) => (
-          <Stack showApp={showApp} stackData={stack} />
+        {stacksRow1.map((stack, i) => (
+          <Stack key={i} showApp={showApp} stackData={stack} />
         ))}
       </div>
       <div className='stack-row-2 stack-row'>
-        {stacksRow2.map((stack) => (
-          <Stack showApp={showApp} stackData={stack} />
+        {stacksRow2.map((stack, i) => (
+          <Stack key={i} showApp={showApp} stackData={stack} />
         ))}
       </div>
     </div>
@@ -38,8 +38,8 @@ const DesktopStacks = ({ stackData, showApp }: DesktopStacksProps) => {
 
 const MobileStacks = ({ stackData, showApp }: DesktopStacksProps) => (
   <div className='stack-rows-wrapper'>
-    {stackData.map((stack) => (
-      <Stack showApp={showApp} stackData={stack} />
+    {stackData.map((stack, i) => (
+      <Stack key={i} showApp={showApp} stackData={stack} />
     ))}
   </div>
 )
@@ -76,8 +76,10 @@ const _TechStack = ({
         <div className='tech-stack-container section-container'>
           <SectionHeader header='Tech Stack' onVisible={onVisible} />
           <div className='subheader-container'>
-            {data.roles.map((role) => (
-              <p className='subheader-text'>{role}</p>
+            {data.roles.map((role, i) => (
+              <p key={i} className='subheader-text'>
+                {role}
+              </p>
             ))}
           </div>
           <MediaQuery minDeviceWidth={mobileWidth}>

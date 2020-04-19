@@ -11,7 +11,7 @@ interface IsProps {
 
 export const HelpingHand = React.memo(
   ({ showFullDescription = false, toggleFullDescription }: IsProps) => {
-    const infoButtonRef = useRef(document.createElement('button'))
+    let infoButtonRef = useRef(document.createElement('button'))
 
     const infoOnClick = () => {
       infoButtonRef.current.blur()
